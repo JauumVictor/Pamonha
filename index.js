@@ -1,7 +1,7 @@
 const { Client, Collection } = require('discord.js'); // npm i discord.js --save
 const client = new Client({ intents: 32767 });
 const fs = require('fs'); // npm i fs --save
-const dotenv = require('dotenv'); // npm i fs --save
+const dotenv = require('dotenv'); // npm i dotenv --save
 dotenv.config();
 const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest --save
 const { Routes } = require('discord-api-types/v9');
