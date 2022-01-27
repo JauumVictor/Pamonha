@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders"); // npm i @discordjs/builders --save
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -16,11 +16,18 @@ module.exports = {
             .setColor(process.env.EMBED_COLOR)
             .setTitle(`📷 Avatar de Perfil`)
             .addField(`Avatar de:`, `\`${user.username}\``, true)
-            .addField(`Baixe:`, `[[Clique aqui]](${avatar})`, true)
             .setImage(avatar)
-            .setFooter(`${interaction.client.user.username}`)
+            .setFooter(interaction.client.user.username)
             .setTimestamp();
 
-        await interaction.reply({ embeds: [embed] });
+        const row = new MessageActionRow(
+            new MessageButton()
+                .setEmoji(`🔗`)
+                .setURL(`${avatar}`)
+                .setLabel(`Baixar`)
+                .setStyle(`URL`)
+        )
+
+        await interaction.reply({ embeds: [embed], components: [row] });
     },
 };
