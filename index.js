@@ -1,8 +1,11 @@
+// Ative as intents do seu BOT no site: https://discord.com/developers/applications/.
+// Calcule as intents necessárias para seu BOT no site: https://ziad87.net/intents/.
+
 const { Client, Collection } = require('discord.js'); // npm i discord.js --save
-const client = new Client({ intents: 32767 });
+const client = new Client({ intents: 32767 }); // Insira o valor das intents necessárias.
 const fs = require('fs'); // npm i fs --save
 const dotenv = require('dotenv'); // npm i dotenv --save
-dotenv.config();
+dotenv.config(); // Configurando o arquivo .env
 const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest --save
 const { Routes } = require('discord-api-types/v9');
 const c = require('colors'); // npm i colors --save
@@ -13,7 +16,7 @@ client.applications = new Collection();
 
 //===============> Handlers <===============//
 
-//Uma pasta dedicada para comandos:
+// Uma pasta dedicada para comandos:
 const commandFolders = fs.readdirSync('./Comandos');
 for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./Comandos/${folder}`).filter(file => file.endsWith(".js"));
@@ -23,7 +26,7 @@ for (const folder of commandFolders) {
         client.commands.set(command.name, command);
     }
 }
-//Uma pasta dedicada para eventos:
+// Uma pasta dedicada para eventos:
 const eventFiles = fs.readdirSync('./Eventos').filter(file => file.endsWith(".js"));
 for (const file of eventFiles) {
     const event = require(`./Eventos/${file}`);
@@ -33,7 +36,7 @@ for (const file of eventFiles) {
         client.on(event.name, (...args) => event.execute(...args, client));
     }
 }
-//Uma pasta dedicada para comandos de barra:
+// Uma pasta dedicada para comandos de barra:
 const application = [];
 const applicationFolders = fs.readdirSync('./Aplicação');
 for (const folder of applicationFolders) {
@@ -63,5 +66,7 @@ const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
         console.error(error);
     }
 })();
+
+//===============> Finalizações <===============//
 
 client.login(process.env.TOKEN);
