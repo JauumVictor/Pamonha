@@ -1,0 +1,19 @@
+// npm install --save-dev eslint
+
+{
+	"extends": "eslint:recommended",
+	"env": {
+		"node": true,
+		"es6": true
+	},
+	"parserOptions": {
+		"ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+	},
+	"rules": {
+		"no-useless-escape": "off"
+	}
+}
