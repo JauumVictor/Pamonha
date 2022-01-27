@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
     name: 'avatar',
@@ -14,12 +14,20 @@ module.exports = {
             .setColor(process.env.EMBED_COLOR)
             .setTitle(`📷 Avatar de Perfil`)
             .addField(`Avatar de:`, `\`${user.username}\``, true)
-            .addField(`Baixe:`, `[[Clique aqui]](${avatar})`, true)
             .setImage(avatar)
-            .setFooter(`${client.user.username}`)
+            .setFooter(client.user.username)
             .setTimestamp();
 
-        message.reply({ embeds: [embed] });
+        let row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setEmoji('🔗')
+                    .setLabel('Baixar')
+                    .setURL(`${avatar}`)
+                    .setStyle('LINK')
+            );
+
+        message.reply({ embeds: [embed], components: [row] });
         msg.delete()
     },
 };

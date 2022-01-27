@@ -1,10 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders"); // npm i @discordjs/builders --save
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('avatar')
-        .setDescription('Obtém a imagem do avatar do usuário mencionado ou do seu próprio avatar.')
+        .setDescription('[⚙️ Utilidades] Avatar do usuário mencionado ou do seu próprio avatar.')
         .addUserOption(option => option.setName('membro').setDescription('Selecione um usuário:')),
     execute: async (interaction) => {
 
@@ -20,14 +20,15 @@ module.exports = {
             .setFooter(interaction.client.user.username)
             .setTimestamp();
 
-        const row = new MessageActionRow(
-            new MessageButton()
-                .setEmoji(`🔗`)
-                .setURL(`${avatar}`)
-                .setLabel(`Baixar`)
-                .setStyle(`URL`)
-        )
+        let row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setEmoji('🔗')
+                    .setLabel('Baixar')
+                    .setURL(`${avatar}`)
+                    .setStyle('LINK')
+            );
 
-        await interaction.reply({ embeds: [embed], components: [row] });
+        await interaction.followUp({ embeds: [embed], components: [row] });
     },
 };

@@ -11,8 +11,8 @@
     "url": "git+https://github.com/JauumVictor/Pamonha.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "https://github.com/JauumVictor/",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/JauumVictor/Pamonha/issues"
   },
@@ -23,6 +23,7 @@
     "colors": "^1.4.0",
     "discord.js": "^13.6.0",
     "dotenv": "^14.3.2",
+    "express": "^4.17.2",
     "fs": "^0.0.1-security"
   },
   "devDependencies": {

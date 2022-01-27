@@ -4,15 +4,17 @@ module.exports = {
     name: 'messageCreate',
     execute: async (message, client) => {
 
+        let prefix = process.env.PREFIX;
+
         if (message.content.match(GetMention(client.user.id))) {
-            message.reply(`Olá ${message.author}, o meu prefixo é: **\`${process.env.PREFIX}\`**.`);
+            message.reply(`Olá ${message.author}, o meu prefixo é: **\`${prefix}\`**.`);
         }
 
-        if (message.content.startsWith(process.env.PREFIX)) {
+        if (message.content.startsWith(prefix)) {
 
             if (message.author.bot) return;
 
-            const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/);
+            const args = message.content.slice(prefix.length).trim().split(/ +/);
             const commandName = args.shift().toLowerCase();
 
             const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
@@ -23,7 +25,7 @@ module.exports = {
                 return message.reply('Ei, comandos não podem ser executados na minha DM, utilize o canal de comandos do servidor.');
 
             try {
-                command.execute(client, message, args);
+                command.execute(client, message, args, prefix);
             } catch (error) {
                 console.error(error);
                 message.reply('Ouve um erro ao executar o comando! Tente novamente mais tarde.');
