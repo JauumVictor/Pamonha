@@ -8,14 +8,14 @@ module.exports = {
 
         const user = client.users.cache.get(args[0]) || message.mentions.users.first() || message.author;
 
-        const avatar = user.displayAvatarURL({ dynamic: true, format: "png", size: 4096 });
+        const avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
         const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
             .setTitle(`📷 Avatar de Perfil`)
             .addField(`Avatar de:`, `\`${user.username}\``, true)
             .setImage(avatar)
-            .setFooter(client.user.username)
+            .setFooter({ text: client.user.username })
             .setTimestamp();
 
         let row = new MessageActionRow()

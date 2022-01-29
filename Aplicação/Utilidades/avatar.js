@@ -10,14 +10,14 @@ module.exports = {
 
         const user = interaction.options.getUser('membro') || interaction.user;
 
-        const avatar = user.displayAvatarURL({ dynamic: true, format: "png", size: 4096 });
+        const avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
         const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
             .setTitle(`📷 Avatar de Perfil`)
             .addField(`Avatar de:`, `\`${user.username}\``, true)
             .setImage(avatar)
-            .setFooter(interaction.client.user.username)
+            .setFooter({ text: interaction.client.user.username })
             .setTimestamp();
 
         let row = new MessageActionRow()

@@ -12,6 +12,8 @@ const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest --save
 const { Routes } = require('discord-api-types/v9');
 const c = require('colors'); // npm i colors --save
 
+//===============> Exportações <===============//
+
 module.exports = client;
 client.commands = new Collection();
 client.applications = new Collection();
@@ -32,6 +34,7 @@ for (const folder of commandFolders) {
 const eventFiles = fs.readdirSync('./Eventos').filter(file => file.endsWith(".js"));
 for (const file of eventFiles) {
     const event = require(`./Eventos/${file}`);
+
     if (event.once) {
         client.once(event.name, (...args) => event.execute(...args, client));
     } else {
