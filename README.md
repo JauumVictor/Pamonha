@@ -12,29 +12,29 @@ O primeiro passo na criação de um BOT é criar seu próprio _aplicativo do Dis
 
 Para criar o aplicativo, vá para o [Discord Developer Portal](https://discord.com/developers/applications/). Supondo que você esteja logado \(se não estiver, faça isso agora\), você chegará a uma página parecida com esta:
 
-![Discord Developer Portal](https://cdn.discordapp.com/attachments/897969894824484864/936315939916505128/application-page.png)
+![Discord Developer Portal](./.gitbook/assets/application-page.png)
 
 Clique em **New Application**. Com isso aparecerá uma janela, na qual você deve simplesmente inserir um nome para o _aplicativo_ \(este será o nome de usuário inicial do BOT\). Clique em **Create**, que criará o próprio aplicativo.
 
-![Janela de Criação](https://cdn.discordapp.com/attachments/897969894824484864/936316987083202630/new-application.png)
+![Janela de Criação](./.gitbook/assets/new-application.png)
 
 O **Application ID** na página será o ID de usuário do seu BOT. A descrição do aplicativo é usada na seção de bots `Sobre mim`. Portanto, sinta-se à vontade para adicionar uma descrição do seu bot em menos de 190 caracteres. (Embora a página indique claramente um máximo de 400, apenas 190 serão exibidos na seção "Sobre mim".)
 
-![Aplicações Criadas](https://cdn.discordapp.com/attachments/897969894824484864/938119514879561758/unknown.png)
+![Aplicações Criadas](./.gitbook/assets/created-application.png)
 
 ### Criando uma conta do BOT
 
 Após criar o aplicativo, precisamos criar o **Usuário do BOT**. Vá para a seção **BOT** à esquerda e você será saudado com a seguinte tela.
 
-![Build-a-bot](https://cdn.discordapp.com/attachments/897969894824484864/936330925791408229/making-bot.png)
+![Build-a-bot](./.gitbook/assets/making-bot.png)
 
 Por fim, clique em **Add Bot** e em **Yes, Do it** para criar seu bot.
 
-![Are you sure?](https://cdn.discordapp.com/attachments/897969894824484864/936331158646583376/add-bot-modal.png)
+![Are you sure?](./.gitbook/assets/add-bot-modal.png)
 
 Há algumas coisas que você pode alterar aqui e, o mais importante, o token.
 
-![Making the bot](https://cdn.discordapp.com/attachments/897969894824484864/936331344412295178/bot-created.png)
+![Making the bot](./.gitbook/assets/bot-created.png)
 
 * `Icon`: para alterar o avatar do BOT \(também pode ser feito com discord.js\);
 * `Username`: para alterar o nome de usuário do seu BOT no Discord \(isso também pode ser feito através de código\).
@@ -53,7 +53,7 @@ Normalmente, os BOT's são convidados com as _permissões_ específicas que são
 
 Depois de ter o link, você pode copiá-lo para uma janela do navegador e visitá-lo. Ao fazer isso, você verá uma janela que permite escolher o servidor onde adicionar o bot, basta selecionar o servidor e clicar em **Autorizar**.
 
-![Inviting the bot](../.gitbook/assets/gs-invite-bot.png)
+![Inviting the bot](../.gitbook/assets/invite-bot.png)
 
 Você precisa estar logado no Discord no navegador com sua conta para ver uma lista de servidores. Você só pode adicionar um bot a servidores nos quais tenha permissões de **Gerenciar servidor** ou **Administrador**.
 
@@ -63,7 +63,7 @@ Tudo bem, **agora preste atenção**, **É SÉRIO**. Esta próxima parte é muit
 
 Com esse aviso fora do caminho, vamos para o próximo passo. O Token, como acabei de mencionar, é a maneira pela qual o BOT se autentica. Para obtê-lo, acesse a seção **Bot** da página do aplicativo e clique em **Copiar** para copiá-lo para a área de transferência. Você também pode _ver_ seu token aqui, se desejar. Sem esquecer a importante chave `Regenerate` se o seu token estiver comprometido:
 
-![NUNCA COMPARTILHE SEU TOKEN!](../.gitbook/assets/gs-copy-token.png)
+![NUNCA COMPARTILHE SEU TOKEN!](../.gitbook/assets/copy-token.png)
 
 ## Step 2: Preparando seu ambiente de codificação
 
@@ -84,7 +84,7 @@ E agora instalamos o Discord.js através do NPM, o Node Package Manager:
 
 `npm i discord.js`
 
-![Instalando os pacotes](../.gitbook/assets/gs-installing-discordjs.gif)
+![Instalando os pacotes](../.gitbook/assets/installing-discordjs.gif)
 
 Isso levará alguns segundos e exibirá muitas coisas na tela. A menos que você não tenha nenhuma grande mensagem vermelha dizendo que não funcionou, ou pacote não encontrado, ou qualquer outra coisa, você está pronto para ir. Se você olhar para sua pasta, notará que há uma nova pasta criada: `node_modules`. Ela contém todos os pacotes instalados para seu projeto.
 
@@ -95,8 +95,7 @@ Sinceramente, considero que, se você chegou até aqui, você compreende o míni
 Ok, finalmente, estamos prontos para começar a codificar. \o/ Vamos dar uma olhada no exemplo mais básico. Segue o código na íntegra:
 
 ```javascript
-const { Client, Intents } = require("discord.js"); // npm i discord.js
-// O Client e as Intents são desestruturados do discord.js, pois exporta um objeto por padrão. Leia sobre desestruturação aqui https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+const { Client, Intents } = require("discord.js"); // O Client e as Intents são desestruturados do discord.js, pois exporta um objeto por padrão. Leia sobre desestruturação aqui https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 });
@@ -125,18 +124,18 @@ Ok, vamos... realmente fazer esse cara funcionar, porque isso é literalmente **
 
 Se tudo correu bem \(espero que tenha acontecido\) seu BOT agora está conectado ao seu servidor, está na lista de usuários e pronto para responder a todos os seus comandos... Bem, pelo menos, _um_ comando até agora: `ping`. Em seu estado atual, o BOT responderá "pong!" para qualquer mensagem que comece com, _exatamente_, `ping`. Vamos demonstrar!
 
-![Ping?, Pong!](../.gitbook/assets/gs-ping-pong.png)
+![Ping?, Pong!](../.gitbook/assets/ping-pong.gif)
 
 Sucesso! Agora você tem um BOT em execução! Como você provavelmente já deve ter percebido, eu provavelmente poderia tagarelar muito mais, mostrando um monte de coisas. Mas o objetivo deste tutorial já está completo!
 
 ## O próximo passo?
 
-Agora que você tem um BOT básico e funcional, é hora de começar a adicionar novos recursos! Vá até [Your First Bot](../first-bot/your-first-bot.md) para continuar sua jornada com a adição de novos comandos e recursos!
+Agora que você tem um BOT básico e funcional, é hora de começar a adicionar novos recursos! Vá até [Discord.js Guide](https://discordjs.guide) para continuar sua jornada conhecendo os recursos da biblioteca do discord.js!
 
 ## Adendo: Obtendo ajuda e suporte
 
 Antes de começar a obter suporte dos servidores Discord para ajudá-lo com seu BOT, recomendo fortemente dar uma olhada nos seguintes recursos muito úteis.
 
 * [Discord.js Documentation](http://discord.js.org): Pelo amor de tudo que é sagrado, **leia a documentação**. Sim, será estranho no início se você não estiver acostumado com a "documentação do desenvolvedor", mas contém muitas informações sobre cada recurso da API. Combine isso com os exemplos acima para ver a API no contexto.
-* [Discord.js Guide](https://discordjs.guide): O guia do discord.js é um ótimo lugar para quem está começando a utilizar o discord.js. Há informações detalhadas sobre a criação de um BOT.
+* [Discord.js Guide](https://discordjs.guide): O guia do discord.js é um ótimo lugar para quem está começando a utilizar o discord.js. Há informações detalhadas sobre a criação de um BOT e sobre sua funcionalidade.
 * [Discord.js Official Server](https://discord.gg/djs): O servidor oficial tem várias pessoas competentes para te ajudar, e a equipe de desenvolvimento também está lá!

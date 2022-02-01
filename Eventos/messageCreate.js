@@ -10,6 +10,10 @@ module.exports = {
             return message.reply(`Olá ${message.author}, o meu prefixo é: **\`${prefix}\`**.`);
         }
 
+        if (message.content === 'ping') {
+            message.reply('pong!')
+        }
+
         if (message.content.startsWith(prefix)) {
 
             if (message.author.bot) return;
