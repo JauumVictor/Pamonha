@@ -20,7 +20,7 @@ Clique em **New Application**. Com isso aparecerá uma janela, na qual você dev
 
 O **Application ID** na página será o ID de usuário do seu BOT. A descrição do aplicativo é usada na seção de bots `Sobre mim`. Portanto, sinta-se à vontade para adicionar uma descrição do seu bot em menos de 190 caracteres. (Embora a página indique claramente um máximo de 400, apenas 190 serão exibidos na seção "Sobre mim".)
 
-![Aplicações Criadas](https://cdn.discordapp.com/attachments/897969894824484864/936330543384133722/created-application.png)
+![Aplicações Criadas](https://cdn.discordapp.com/attachments/897969894824484864/938119514879561758/unknown.png)
 
 ### Criando uma conta do BOT
 
@@ -55,60 +55,54 @@ Depois de ter o link, você pode copiá-lo para uma janela do navegador e visit�
 
 ![Inviting the bot](../.gitbook/assets/gs-invite-bot.png)
 
-{% hint style="info" %}
-You need to be logged in to Discord on the browser with your account to see a list of servers. You can only add a bot to servers where you have **Manage Server** or **Administrator** permissions.
-{% endhint %}
+Você precisa estar logado no Discord no navegador com sua conta para ver uma lista de servidores. Você só pode adicionar um bot a servidores nos quais tenha permissões de **Gerenciar servidor** ou **Administrador**.
 
-### Getting your Bot Token
+### Obtendo seu token
 
-{% hint style="danger" %}
-Alright so, **big flashy warning**, **PAY ATTENTION**. This next part is really, really important: Your bot's **token** is meant to be **SECRET**. It is the way by which your bot authenticates with the Discord server in the same way that you login to Discord with a username and password. **Revealing your token is like putting your password on the internet**, and anyone that gets this token can use **your** bot connection to do things. Like delete all the messages on your server and ban everyone. If your token ever reaches the internet, **change it immediately**. This includes putting it on pastebin/hastebin, having it in a public github repository, displaying a screenshot of it, anything. **GOT IT? GOOD!**, Github has partnered with Discord to invalidate your token if it's found within your code repository and message you via a `System` message on Discord.
-{% endhint %}
+Tudo bem, **agora preste atenção**, **É SÉRIO**. Esta próxima parte é muito, muito importante: o **token** do seu BOT deve ser **SECRETO**. É a maneira pela qual seu BOT se autentica no servidor Discord da mesma forma que você faz login no Discord com um nome de usuário e senha. **Revelar seu token é como colocar sua senha na internet**, e qualquer pessoa que receber esse token pode usar **sua** conexão de bot para fazer coisas. Como deletar todas as mensagens do seu servidor e banir todos. Se o seu token chegar à Internet, **altere-o imediatamente**. Isso inclui colocá-lo em pastebin/hastebin, tê-lo em um repositório público do github, exibir uma captura de tela dele, qualquer coisa. **ENTENDI? BOM!**, o Github fez uma parceria com o Discord para invalidar seu token se ele for encontrado em seu repositório de código e enviar uma mensagem para você por meio de uma mensagem `System` no Discord.
 
-With that warning out of the way, on to the next step. The Token, as I just mentioned, is the way in which the bot authenticates. To get it, go to the **Bot** section of the app page, then click **Copy** to copy it to the clipboard. You can also _view_ your token here if you wish. Not forgetting that ever important `Regenerate` key if your token is compromised:
+Com esse aviso fora do caminho, vamos para o próximo passo. O Token, como acabei de mencionar, é a maneira pela qual o BOT se autentica. Para obtê-lo, acesse a seção **Bot** da página do aplicativo e clique em **Copiar** para copiá-lo para a área de transferência. Você também pode _ver_ seu token aqui, se desejar. Sem esquecer a importante chave `Regenerate` se o seu token estiver comprometido:
 
-![NEVER SHARE YOUR TOKEN! This cannot be overstated.](../.gitbook/assets/gs-copy-token.png)
+![NUNCA COMPARTILHE SEU TOKEN!](../.gitbook/assets/gs-copy-token.png)
 
-## Step 2: Getting your coding environment ready
+## Step 2: Preparando seu ambiente de codificação
 
-This might go beyond saying but I'll say it anyway: You can't just start shoving bot code in notepad.exe and expect it to work. In order to use discord.js you will need a couple of things installed. At the very least:
+Isso pode soar desnecessário, mas vou dizer de qualquer maneira: você não pode simplesmente começar pôr o código do BOT no terminal e esperar que funcione. Para usar o discord.js, você precisará de algumas coisas instaladas. Pelo menos:
 
-* Get Node.js version 16.6 or higher \(earlier versions are not supported\). [Download for windows](https://nodejs.org/en/download/) or if you're on a linux distro, via [package manager](https://nodejs.org/en/download/package-manager/).
-* Get an actual code editor. Don't use notepad or notepad++, they are not sufficient. [VS Code](https://www.visualstudio.com/en-us/products/code-vs.aspx) , [Sublime Text 3](https://www.sublimetext.com/3) and [Atom](https://atom.io/) are often recommended.
+* Obtenha o Node.js versão 16.6.0 ou superior \(versões anteriores não são suportadas\). [Baixe para Windows](https://nodejs.org/pt-br/download/) ou se você estiver em uma distribuição Linux, via [gerenciador de pacotes](https://nodejs.org/pt-br/download/package-manager /).
+* Obtenha um editor de código de verdade! Não use o notepad ou notepad++, eles não são suficientes. [VS Code](https://code.visualstudio.com), [Sublime Text 3](https://www.sublimetext.com/3) e [Atom](https://atom.io/) são frequentemente recomendados.
 
-Once you have the required software, the next step is to prepare a _space_ for your code. Please don't just put your files on your desktop it's... unsanitary. If you have more than one hard drive or partition, you could create a special place for your development project. Mine, for example, is `D:\develop\` , and my bot is `D:\develop\guide-bot\` . Once you've created a folder, open your CLI \(command line interface\) in that folder. Linux users, you know how. Windows users, here's a trick: `SHIFT + Right Click` in the folder, then choose the "secret" command **Open PowerShell window here**. Magic!
+Depois de ter o software necessário, a próxima etapa é preparar um _espaço_ para seu código. Por favor, não coloque seus arquivos na área de trabalho, é... anti-higiênico. Se você tiver mais de um disco rígido ou partição, poderá criar um local especial para seu projeto. O meu, por exemplo, é `D:\develop\` , e meu BOT é `D:\develop\pamonha\`. Depois de criar uma pasta, abra sua CLI \(Interface de Linha de Comando\) nessa pasta. Usuários de Linux, você sabe como. Usuários do Windows, aqui está um truque: `Shift + Clique com o botão direito` na pasta e escolha o comando "secreto" **Abra a janela do PowerShell aqui**. Magia!
 
-And now ready for the next step!
+E agora você já está pronto para o próximo passo!
 
-## Installing Discord.js
+## Instalando o Discord.js
 
-So you have your CLI ready to go, in an empty folder, and you just wanna start coding. Alright, hold on one last second: let's install discord.js. But first we'll initialize this folder with NPM, which will ensure that any installed module will be here, and nowhere else. Simply run `npm init -y` and then hit Enter. A new file is created called `package.json`, [click here](https://docs.npmjs.com/files/package.json) for more info about it.
+Então você tem sua CLI pronta, em uma pasta vazia, e você só quer começar a codificar. Certo, espere um último segundo: vamos instalar o discord.js. Mas primeiro vamos inicializar esta pasta com o NPM, o que garantirá que qualquer módulo instalado estará aqui e em nenhum outro lugar. Simplesmente execute `npm init -y` e pressione Enter. Um novo arquivo é criado chamado `package.json`, [clique aqui](https://docs.npmjs.com/files/package.json) para mais informações sobre ele.
 
-And now we install Discord.js through NPM, the Node Package Manager:
+E agora instalamos o Discord.js através do NPM, o Node Package Manager:
 
-`npm i discord.js` _At the time of writing this v13 hasn't been released yet._
+`npm i discord.js`
 
-![Installing the packages](../.gitbook/assets/gs-installing-discordjs.gif)
+![Instalando os pacotes](../.gitbook/assets/gs-installing-discordjs.gif)
 
-This will take a couple of heartbeats and display a lot of things on screen. Unless you have a big fat red message saying it didn't work, or package not found, or whatever, you're good to go. If you look at your folder, you'll notice that there's a new folder created here: `node_modules` . This contains all the installed packages for your project.
+Isso levará alguns segundos e exibirá muitas coisas na tela. A menos que você não tenha nenhuma grande mensagem vermelha dizendo que não funcionou, ou pacote não encontrado, ou qualquer outra coisa, você está pronto para ir. Se você olhar para sua pasta, notará que há uma nova pasta criada: `node_modules`. Ela contém todos os pacotes instalados para seu projeto.
 
-## Getting your first bot running
+## Colocando seu primeiro BOT em execução
 
-{% hint style="info" %}
-I honestly consider that if you don't understand the code you're about to see, coding a bot might not be for you. If you do not understand the following sample, please go to [CodeAcademy](https://www.codecademy.com/learn/javascript) and learn Javascript first. I beg of you: stop, drop, and roll.
-{% endhint %}
+Sinceramente, considero que, se você chegou até aqui, você compreende o mínimo de JavaScript. Se você não entender o exemplo a seguir, acesse [CodeAcademy](https://www.codecademy.com/learn/introduction-to-javascript) e aprenda JavaScript primeiro. Eu imploro: pare, e aprenda pelo menos o básico.
 
-Okay finally, we're ready to start coding. \o/ Let's take a look at the most basic of examples, the ping-pong bot. Here's the code in its entirety:
+Ok, finalmente, estamos prontos para começar a codificar. \o/ Vamos dar uma olhada no exemplo mais básico. Segue o código na íntegra:
 
 ```javascript
-const { Client, Intents } = require("discord.js");
-// The Client and Intents are destructured from discord.js, since it exports an object by default. Read up on destructuring here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+const { Client, Intents } = require("discord.js"); // npm i discord.js
+// O Client e as Intents são desestruturados do discord.js, pois exporta um objeto por padrão. Leia sobre desestruturação aqui https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 });
 
 client.on("ready", () => {
-  console.log("I am ready!");
+  console.log("Estou online!");
 });
 
 client.on("messageCreate", (message) => {
@@ -117,34 +111,32 @@ client.on("messageCreate", (message) => {
   }
 });
 
-client.login("SuperSecretBotTokenHere");
+client.login("TokenSuperSecretoAqui");
 ```
 
-{% hint style="info" %}
-The variable `client` here is used an an example to represent the [&lt;Client&gt;](https://discord.js.org/#/docs/main/stable/class/Client) class. Some people call it `bot`, but you can technically call it whatever you want. I recommend sticking to `client` though!
-{% endhint %}
+A variável `client` aqui é usada como exemplo para representar a classe [&lt;Client&gt;](https://discord.js.org/#/docs/main/stable/class/Client). Algumas pessoas chamam de `bot`, mas tecnicamente você pode chamá-lo do que quiser. Eu recomendo ficar com `client`!
 
-Okay let's just... actually get this guy to work, because this is literally **a functional bot**. So let's make it run!
+Ok, vamos... realmente fazer esse cara funcionar, porque isso é literalmente **um bot funcional**!
 
-1. Copy that code and paste it in your editor.
-2. Replace the string in the `client.login()` function with _your_ token
-3. Save the file as `index.js`.
-4. In the CLI \(which should still be in your project folder\) type the following command: `node index.js`
+1. Copie esse código e cole-o em seu editor.
+2. Substitua a string na função `client.login()` pelo seu token.
+3. Salve o arquivo como `index.js`.
+4. Na CLI \(que ainda deve estar na pasta do seu projeto\) digite o seguinte comando: `node index.js` ou simplesmente `node .`.
 
-If all went well \(hopefully it did\) your bot is now connected to your server, it's in your user list, and ready to answer all your commands... Well, at least, _one_ command: `ping`. In its current state, the bot will reply "pong!" to any message that starts with, _exactly_, `ping`. Let's demonstrate!
+Se tudo correu bem \(espero que tenha acontecido\) seu BOT agora está conectado ao seu servidor, está na lista de usuários e pronto para responder a todos os seus comandos... Bem, pelo menos, _um_ comando até agora: `ping`. Em seu estado atual, o BOT responderá "pong!" para qualquer mensagem que comece com, _exatamente_, `ping`. Vamos demonstrar!
 
 ![Ping?, Pong!](../.gitbook/assets/gs-ping-pong.png)
 
-Success! You now have a bot running! As you probably realize by now I could probably blabber on from here, showing you a bunch of stuff. But the scope of this tutorial is completed, so I'll shut up now! Ciao!
+Sucesso! Agora você tem um BOT em execução! Como você provavelmente já deve ter percebido, eu provavelmente poderia tagarelar muito mais, mostrando um monte de coisas. Mas o objetivo deste tutorial já está completo!
 
-## The Next Step?
+## O próximo passo?
 
-Now that you have a basic, functional bot, it's time to start adding new features! Head on over to [Your First Bot](../first-bot/your-first-bot.md) to continue on your journey with adding new commands and features!
+Agora que você tem um BOT básico e funcional, é hora de começar a adicionar novos recursos! Vá até [Your First Bot](../first-bot/your-first-bot.md) para continuar sua jornada com a adição de novos comandos e recursos!
 
-## Addendum: Getting help and Support
+## Adendo: Obtendo ajuda e suporte
 
-Before you start getting support from Discord servers to help you with your bot, I strongly advise taking a look at the following, very useful, resources.
+Antes de começar a obter suporte dos servidores Discord para ajudá-lo com seu BOT, recomendo fortemente dar uma olhada nos seguintes recursos muito úteis.
 
-* [Discord.js Documentation](http://discord.js.org) : For the love of all that is \(un\)holy, **read the documentation**. Yes, it will be alien at first if you are not used to "developer documentation" but it contains a whole lot of information about each and every feature of the API. Combine this with the examples above to see the API in context.
-* [Evie.Codes on YouTube](https://www.youtube.com/channel/UCvQubaJPD0D-PSokbd5DAiw): If you prefer video to words, Evie's YouTube series \(which is good, though no longer maintained with new videos!\) gets you started with bots.
-* [Discord.js Official Server](https://discord.gg/djs): The official server has a number of competent people to help you, and the development team is there too!
+* [Discord.js Documentation](http://discord.js.org): Pelo amor de tudo que é sagrado, **leia a documentação**. Sim, será estranho no início se você não estiver acostumado com a "documentação do desenvolvedor", mas contém muitas informações sobre cada recurso da API. Combine isso com os exemplos acima para ver a API no contexto.
+* [Discord.js Guide](https://discordjs.guide): O guia do discord.js é um ótimo lugar para quem está começando a utilizar o discord.js. Há informações detalhadas sobre a criação de um BOT.
+* [Discord.js Official Server](https://discord.gg/djs): O servidor oficial tem várias pessoas competentes para te ajudar, e a equipe de desenvolvimento também está lá!
