@@ -53,7 +53,7 @@ Normalmente, os BOT's são convidados com as _permissões_ específicas que são
 
 Depois de ter o link, você pode copiá-lo para uma janela do navegador e visitá-lo. Ao fazer isso, você verá uma janela que permite escolher o servidor onde adicionar o bot, basta selecionar o servidor e clicar em **Autorizar**.
 
-![Inviting the bot](../.gitbook/assets/invite-bot.png)
+![Inviting the bot](./.gitbook/assets/invite-bot.png)
 
 Você precisa estar logado no Discord no navegador com sua conta para ver uma lista de servidores. Você só pode adicionar um bot a servidores nos quais tenha permissões de **Gerenciar servidor** ou **Administrador**.
 
@@ -63,7 +63,7 @@ Tudo bem, **agora preste atenção**, **É SÉRIO**. Esta próxima parte é muit
 
 Com esse aviso fora do caminho, vamos para o próximo passo. O Token, como acabei de mencionar, é a maneira pela qual o BOT se autentica. Para obtê-lo, acesse a seção **Bot** da página do aplicativo e clique em **Copiar** para copiá-lo para a área de transferência. Você também pode _ver_ seu token aqui, se desejar. Sem esquecer a importante chave `Regenerate` se o seu token estiver comprometido:
 
-![NUNCA COMPARTILHE SEU TOKEN!](../.gitbook/assets/copy-token.png)
+![NUNCA COMPARTILHE SEU TOKEN!](./.gitbook/assets/copy-token.png)
 
 ## Step 2: Preparando seu ambiente de codificação
 
@@ -84,7 +84,7 @@ E agora instalamos o Discord.js através do NPM, o Node Package Manager:
 
 `npm i discord.js`
 
-![Instalando os pacotes](../.gitbook/assets/installing-discordjs.gif)
+![Instalando os pacotes](./.gitbook/assets/installing-discordjs.gif)
 
 Isso levará alguns segundos e exibirá muitas coisas na tela. A menos que você não tenha nenhuma grande mensagem vermelha dizendo que não funcionou, ou pacote não encontrado, ou qualquer outra coisa, você está pronto para ir. Se você olhar para sua pasta, notará que há uma nova pasta criada: `node_modules`. Ela contém todos os pacotes instalados para seu projeto.
 
@@ -124,7 +124,7 @@ Ok, vamos... realmente fazer esse cara funcionar, porque isso é literalmente **
 
 Se tudo correu bem \(espero que tenha acontecido\) seu BOT agora está conectado ao seu servidor, está na lista de usuários e pronto para responder a todos os seus comandos... Bem, pelo menos, _um_ comando até agora: `ping`. Em seu estado atual, o BOT responderá "pong!" para qualquer mensagem que comece com, _exatamente_, `ping`. Vamos demonstrar!
 
-![Ping?, Pong!](../.gitbook/assets/ping-pong.gif)
+![Ping?, Pong!](./.gitbook/assets/ping-pong.gif)
 
 Sucesso! Agora você tem um BOT em execução! Como você provavelmente já deve ter percebido, eu provavelmente poderia tagarelar muito mais, mostrando um monte de coisas. Mas o objetivo deste tutorial já está completo!
 
