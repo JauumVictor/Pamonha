@@ -50,7 +50,7 @@ for (const folder of applicationFolders) {
     for (const file of applicationFiles) {
         const command = require(`./Aplicação/${folder}/${file}`);
         client.applications.set(command.data.name, command);
-        application.push(command.data.toJSON());
+        application.push(command.data);
     }
 }
 

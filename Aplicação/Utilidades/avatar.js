@@ -1,21 +1,23 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+// eslint-disable-next-line no-unused-vars
+const { CommandInteraction, MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('avatar')
-        .setDescription('[⚙️ Utilidades] Avatar do usuário mencionado ou do seu próprio avatar.')
-        .addUserOption(option => option.setName('membro').setDescription('Selecione um usuário:')),
+    data: {
+        name: 'avatar',
+        description: '[⚙️ Utilidades] Avatar do usuário mencionado ou do seu próprio avatar.',
+    },
+    /**
+     * @param {CommandInteraction} interaction 
+     */
     execute: async (interaction) => {
 
-        const user = interaction.options.getUser('membro') || interaction.user;
-
-        const avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+        let member = interaction.options.getMember('membro') || interaction.member;
+        let avatar = member.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
         const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
             .setTitle(`📷 Avatar de Perfil`)
-            .addField(`Avatar de:`, `\`${user.username}\``, true)
+            .addField(`Avatar de:`, `\`${member.displayName}\``, true)
             .setImage(avatar)
             .setFooter({ text: interaction.client.user.username })
             .setTimestamp();
