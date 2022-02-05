@@ -5,6 +5,13 @@ module.exports = {
     data: {
         name: 'avatar',
         description: '[⚙️ Utilidades] Avatar do usuário mencionado ou do seu próprio avatar.',
+        options: [
+            {
+                name: "membro",
+                type: "6",
+                description: "Selecione um usuário:"
+            },
+        ],
     },
     /**
      * @param {CommandInteraction} interaction 
