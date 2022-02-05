@@ -3,7 +3,10 @@ const { Client, Message, MessageEmbed, MessageActionRow, MessageButton } = requi
 
 module.exports = {
     name: 'avatar',
+    description: 'Avatar do usuário mencionado ou do seu próprio avatar.',
+    category: "⚙️ Utilidades",
     aliases: ['av', 'icon'],
+    usage: [],
     /**
      * 
      * @param {Client} client 

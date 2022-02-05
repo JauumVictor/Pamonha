@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const { CommandInteraction, MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const { CommandInteraction, MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 
 module.exports = {
     data: {
@@ -7,9 +7,9 @@ module.exports = {
         description: '[⚙️ Utilidades] Avatar do usuário mencionado ou do seu próprio avatar.',
         options: [
             {
-                name: "membro",
-                type: "6",
-                description: "Selecione um usuário:"
+                name: 'membro',
+                type: 6,
+                description: 'Selecione um usuário:'
             },
         ],
     },

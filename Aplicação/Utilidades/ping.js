@@ -1,6 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const { CommandInteraction } = require('discord.js');
-const ClientEmbed = require('../../Structures/ClientEmbed');
+const { CommandInteraction, MessageEmbed } = require('discord.js');
 
 module.exports = {
     data: {
@@ -15,7 +14,7 @@ module.exports = {
         const created = Date.now() - interaction.createdTimestamp;
         const host = Math.round(interaction.client.ws.ping);
 
-        const embed = new ClientEmbed()
+        const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
             .setTitle("Pong! 🏓")
             .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)

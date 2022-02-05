@@ -5,7 +5,6 @@ module.exports = {
     name: 'ping',
     description: 'Vê o ping de resposta entre usuário e cliente e do host do BOT.',
     category: "⚙️ Utilidades",
-    cooldown: 5,
     aliases: ['pong'],
     usage: [],
     /**
