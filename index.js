@@ -31,9 +31,9 @@ for (const folder of commandFolders) {
     }
 }
 // Uma pasta dedicada para eventos:
-const eventFolder = fs.readdirSync('./Eventos')
-for (const file of eventFolder) {
-    const event = require(`./Eventos/${file}`).filter(file => file.endsWith(".js"));
+const eventFiles = fs.readdirSync('./Eventos').filter(file => file.endsWith(".js"));
+for (const file of eventFiles) {
+    const event = require(`./Eventos/${file}`);
 
     if (event.once) {
         client.once(event.name, (...args) => event.execute(...args, client));
