@@ -15,7 +15,7 @@ module.exports = {
     execute: async (client, message) => {
         let msg = await message.channel.send("**🔍 | Processando...**");
 
-        const created = Date.now() - message.createdTimestamp;
+        const created = Math.round(Date.now() - message.createdTimestamp);
         const host = Math.round(client.ws.ping);
 
         const embed = new MessageEmbed()

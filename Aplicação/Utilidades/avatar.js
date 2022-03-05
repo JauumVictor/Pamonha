@@ -19,12 +19,12 @@ module.exports = {
     execute: async (interaction) => {
 
         let member = interaction.options.getMember('membro') || interaction.member;
-        let avatar = member.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+        let avatar = member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
         const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
             .setTitle(`📷 Avatar de Perfil`)
-            .addField(`Avatar de:`, `\`${member.displayName}\``, true)
+            .addField(`Avatar de:`, `\`${member.user.username}\``, true)
             .setImage(avatar)
             .setFooter({ text: interaction.client.user.username })
             .setTimestamp();
@@ -38,6 +38,6 @@ module.exports = {
                     .setStyle('LINK')
             );
 
-        await interaction.followUp({ embeds: [embed], components: [row] });
+        await interaction.reply({ embeds: [embed], components: [row] });
     },
 };

@@ -17,12 +17,12 @@ module.exports = {
 
         let msg = await message.channel.send("**🔍 | Processando...**");
         let member = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || message.member;
-        let avatar = member.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+        let avatar = member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
         const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
             .setTitle(`📷 Avatar de Perfil`)
-            .addField(`Avatar de:`, `\`${member.displayName}\``, true)
+            .addField(`Avatar de:`, `\`${member.user.username}\``, true)
             .setImage(avatar)
             .setFooter({ text: client.user.username })
             .setTimestamp();

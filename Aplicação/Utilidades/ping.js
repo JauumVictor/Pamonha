@@ -11,16 +11,16 @@ module.exports = {
      */
     execute: async (interaction) => {
 
-        const created = Date.now() - interaction.createdTimestamp;
+        const created = Math.round(Date.now() - interaction.createdTimestamp);
         const host = Math.round(interaction.client.ws.ping);
 
         const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
-            .setTitle("Pong! 🏓")
+            .setTitle('Pong! 🏓')
             .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
             .setFooter({ text: interaction.client.user.username })
             .setTimestamp();
 
-        interaction.followUp({ embeds: [embed] });
+        interaction.reply({ embeds: [embed] });
     },
 };
