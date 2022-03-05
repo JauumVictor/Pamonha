@@ -23,7 +23,7 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
-            .setTitle(`📷 Avatar de Perfil`)
+            .setTitle('📷 Avatar de Perfil')
             .addField(`Avatar de:`, `\`${member.user.username}\``, true)
             .setImage(avatar)
             .setFooter({ text: interaction.client.user.username })

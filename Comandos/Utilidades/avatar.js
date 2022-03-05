@@ -4,7 +4,7 @@ const { Client, Message, MessageEmbed, MessageActionRow, MessageButton } = requi
 module.exports = {
     name: 'avatar',
     description: 'Avatar do usuário mencionado ou do seu próprio avatar.',
-    category: "⚙️ Utilidades",
+    category: '⚙️ Utilidades',
     aliases: ['av', 'icon'],
     usage: [],
     /**
@@ -15,13 +15,13 @@ module.exports = {
      */
     execute: async (client, message, args) => {
 
-        let msg = await message.channel.send("**🔍 | Processando...**");
+        let msg = await message.channel.send('**🔍 | Processando...**');
         let member = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || message.member;
         let avatar = member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
         const embed = new MessageEmbed()
             .setColor(process.env.EMBED_COLOR)
-            .setTitle(`📷 Avatar de Perfil`)
+            .setTitle('📷 Avatar de Perfil')
             .addField(`Avatar de:`, `\`${member.user.username}\``, true)
             .setImage(avatar)
             .setFooter({ text: client.user.username })
