@@ -74,12 +74,12 @@ module.exports = {
 
       collector.on('collect', async (i) => {
         let collected = i.content;
+        let attachment = i.attachment
+        console.log(collected)
         
-        if (!i.attachment.size) {
+        if (!attachment) {
           return interaction.followUp('Você deve inserir um anexo ou link para que eu possa defini-lo como avatar.');
         }
-
-        console.log(collected)
 
         if (collected == 'cancelar') {
           return interaction.followUp('Cancelado!');
