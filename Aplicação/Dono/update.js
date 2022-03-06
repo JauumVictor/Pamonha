@@ -80,10 +80,10 @@ module.exports = {
 
         if (collected == 'cancelar') {
           return interaction.followUp('Cancelado!');
-        } else if (!attachment) {
+        } else if (attachment.size < 0) {
           return interaction.followUp('Você deve inserir um anexo ou link para que eu possa defini-lo como avatar.');
         } else {
-          let url = message.attachments.first().url;
+          let url = attachment.first().url;
           console.log(url);
 
           interaction.client.user.setAvatar(url)
