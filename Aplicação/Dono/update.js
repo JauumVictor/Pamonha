@@ -75,13 +75,20 @@ module.exports = {
       collector.on('collect', async (i) => {
         let regex = /(https?:\/\/)/g;
         
-        if (!regex.test(i.content)) {
-          return interaction.reply(`O link deve conter http://`)
-        }
-
         if (i.content == 'cancelar') {
           return interaction.followUp('Cancelado!');
-        } else if (i.attachments.size === 0) {
+        } else if (!regex.test(i.content) && !i.content.startsWith(regex)) {
+          return interaction.followUp(`O link deve conter http://`)
+        } else {
+          interaction.client.user.setAvatar(i.content)
+            .then(() => interaction.followUp(`O novo avatar foi definido com sucesso.`))
+            .catch((e) => {
+              console.error(e);
+              return interaction.followUp('Ocorreu um erro, tente novamente.');
+            });
+        }
+
+         if (i.attachments.size === 0) {
           return interaction.followUp('Você deve inserir um anexo ou link para que eu possa defini-lo como avatar.');
         } else {
           let url = await i.attachments.first().url;
