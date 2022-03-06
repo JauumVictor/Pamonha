@@ -45,7 +45,7 @@ module.exports = {
       await interaction.reply('Insira o novo nome:');
 
       let filter = (i) => i.author.id === interaction.user.id;
-      let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
+      let collector = interaction.channel.createMessageCollector({ filter: filter, time: 10000, max: 1, errors: ['time'] });
 
       collector.on('collect', (i) => {
         let collected = i.content;
@@ -59,7 +59,7 @@ module.exports = {
       });
 
       collector.on('end', () => {
-        interaction.reply('Acabou o tempo.');
+        interaction.followUp('Acabou o tempo.');
       });
       
     } else if (client == 'avatar') {
@@ -80,7 +80,7 @@ module.exports = {
       });
       
       collector.on('end', () => {
-        interaction.reply('Acabou o tempo.');
+        interaction.followUp('Acabou o tempo.');
       });
       
     } else {
