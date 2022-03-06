@@ -74,17 +74,25 @@ module.exports = {
 
       collector.on('collect', async (i) => {
         let collected = i.content;
-        let attachment = i.attachment
-        console.log(collected)
-        
-        if (!attachment) {
-          return interaction.followUp('Você deve inserir um anexo ou link para que eu possa defini-lo como avatar.');
-        }
+        let attachment = i.attachments;
+        console.log(collected);
+        console.log(attachment);
 
         if (collected == 'cancelar') {
           return interaction.followUp('Cancelado!');
-        }
+        } else if (!attachment) {
+          return interaction.followUp('Você deve inserir um anexo ou link para que eu possa defini-lo como avatar.');
+        } else {
+          let url = message.attachments.first().url;
+          console.log(url);
 
+          interaction.client.user.setAvatar(url)
+            .then(() => interaction.followUp(`O novo avatar foi definido com sucesso.`))
+            .catch((e) => {
+              console.error(e);
+              return interaction.followUp('Ocorreu um erro, tente novamente mais tarde');
+            });
+        }
       });
 
       collector.on('end', (c, r) => {
