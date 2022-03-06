@@ -49,14 +49,17 @@ module.exports = {
 
       collector.on('collect', (i) => {
         let collected = i.content;
-        
+
         interaction.client.user.setUsername(collected).catch((e) => {
           console.error(e);
           return interaction.reply('Ocorreu um erro, tente novamente mais tarde');
         });
       });
+
+      collector.on('end', () => {
+        interaction.reply('Acabou o tempo.');
+      });
       
-      collector.on('end', adlsyn)
     } else if (client == 'avatar') {
       await interaction.reply('Insira um link ou anexo:');
 
@@ -73,6 +76,11 @@ module.exports = {
         }
 
       });
+      
+      collector.on('end', () => {
+        interaction.reply('Acabou o tempo.');
+      });
+      
     } else {
       let avatar = interaction.client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
       let username = interaction.client.user.username;
