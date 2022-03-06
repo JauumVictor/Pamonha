@@ -99,7 +99,7 @@ client.on('messageCreate', async (message) => {
       usersMap.set(message.author.id, userData);
     } else {
       ++msgCount;
-      if (parseInt(msgCount) === LIMIT) {
+      if (parseInt(msgCount) > LIMIT) {
         let muterole = message.guild.roles.cache.find((r) => r.name === 'Silenciado(a)');
 
         if (!muterole) {
@@ -107,7 +107,7 @@ client.on('messageCreate', async (message) => {
             muterole = await message.guild.roles.create({ name: "Silenciado(a)", color: "BLACK" })
 
             message.guild.channels.cache.forEach(async (channel) => {
-              await channel.permissionOverwrites.create(role, {
+              await channel.permissionOverwrites.create(muterole, {
                 SEND_MESSAGES: false,
                 ADD_REACTIONS: false,
                 SPEAK: false,
@@ -141,13 +141,11 @@ client.on('messageCreate', async (message) => {
         if (!logchannel) {
           message.reply(`Você está enviando uma alta quantidade de mensagens por segundo, você foi mutado(a) temporariamente por \`60 segundos\`.`);
         } else {
-          client.channels.cache.get(logchannel.id).send(log);
+          client.channels.cache.get(logchannel.id).send({ embeds: [log] });
           message.reply(`Você está enviando uma alta quantidade de mensagens por segundo, você foi mutado(a) temporariamente por \`60 segundos\`.`);
         }
 
-        message.member.send(mutado).catch(e => {
-          if (e) return;
-        });
+        message.member.send({ embeds: [mutado] }).catch(() => {});
 
         setTimeout(() => {
           if (!message.member) return;
