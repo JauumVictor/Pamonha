@@ -4,24 +4,28 @@ const { CommandInteraction, MessageEmbed, MessageActionRow, MessageButton } = re
 module.exports = {
   data: {
     name: 'update',
-    description: '[🤖 Developer] Updates the client user.',
+    description: '[🤖 Developer] Atualiza o cliente.',
     category: '🤖 Developer',
     cooldown: 0,
-    usage: ['username: <new username> | avatar: <attachment>'],
+    usage: [''],
     type: 1,
     options: [
       {
-        name: 'username',
+        name: 'client',
         type: 3,
-        description: 'Insira o novo nome:',
-        required: false
-      },
-      {
-        name: 'attachment',
-        type: 3,
-        description: 'Insira um link ou anexo:',
+        description: 'Escolha uma opção:',
         required: false,
-      }
+        choices: [
+          {
+            name: 'username',
+            value: 'username'
+          },
+          {
+            name: 'avatar',
+            value: 'avatar'
+          }
+        ]
+      },
     ]
   },
   /**
@@ -35,24 +39,39 @@ module.exports = {
 
     //Código aqui:
 
-    let input = interaction.options.getString('username');
-    let attachment = interaction.options.getString('attachment');
+    let client = interaction.options.getString('client');
 
-    if (input) {
-      interaction.client.user.setUsername(input).catch((e) => {
-        console.error(e);
-        return interaction.reply('Ocorreu um erro, tente novamente mais tarde');
-      });
-    } else if (attachment) {
-      interaction.reply('Insira um link ou anexo:');
-      
-      let filter = (i) = i.user.id === interaction.user.id;
+    if (client == 'username') {
+      await interaction.reply('Insira o novo nome:');
+
+      let filter = (i) => i.user.id === interaction.user.id;
       let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
-      
-      collector.on('collect', async (i) => {
+
+      collector.on('collect', (i) => {
         let collected = i.content;
         
+        interaction.client.user.setUsername(collected).catch((e) => {
+          console.error(e);
+          return interaction.reply('Ocorreu um erro, tente novamente mais tarde');
+        });
+      });
+      
+      collector.on('end', adlsyn)
+    } else if (client == 'avatar') {
+      await interaction.reply('Insira um link ou anexo:');
+
+      let filter = (i) => i.user.id === interaction.user.id;
+      let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
+
+      collector.on('collect', async (i) => {
+        let collected = i.content;
+
         console.log(collected)
+
+        if (collected == 'cancelar') {
+          return interaction.followUp('Cancelado!');
+        }
+
       });
     } else {
       let avatar = interaction.client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
@@ -73,7 +92,7 @@ module.exports = {
           .setURL(avatar)
           .setStyle('LINK')
         );
-        
+
       await interaction.reply({ embeds: [embed], components: [row] });
     }
   }
