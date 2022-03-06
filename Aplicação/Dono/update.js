@@ -73,6 +73,12 @@ module.exports = {
       let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
 
       collector.on('collect', async (i) => {
+        let regex = /(https?:\/\/)/g;
+        
+        if (!regex.test(i.content)) {
+          return interaction.reply(`O link deve conter http://`)
+        }
+
         if (i.content == 'cancelar') {
           return interaction.followUp('Cancelado!');
         } else if (i.attachments.size === 0) {
