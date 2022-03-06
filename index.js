@@ -4,7 +4,7 @@
 // Calcule as intents necessárias para seu BOT no site: https://ziad87.net/intents/.
 
 const { Client, Collection } = require('discord.js'); // npm i discord.js --save
-const client = new Client({ intents: 32767 }); // Insira o valor das intents necessárias.
+const client = new Client({ intents: 1999 }); // Insira o valor das intents necessárias.
 const { readdirSync }= require('fs'); // npm i fs --save
 const { config } = require('dotenv'); // npm i dotenv --save
 const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest --save
