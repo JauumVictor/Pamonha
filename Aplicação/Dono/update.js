@@ -47,7 +47,7 @@ module.exports = {
       await interaction.reply('Insira o novo nome:');
 
       let filter = (i) => i.author.id === interaction.user.id;
-      let collector = interaction.channel.createMessageCollector({ filter: filter, time: 10000, max: 1, errors: ['time'] });
+      let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
 
       collector.on('collect', (i) => {
         let collected = i.content;
@@ -74,6 +74,10 @@ module.exports = {
 
       collector.on('collect', async (i) => {
         let collected = i.content;
+        
+        if (!i.attachment.size) {
+          return interaction.followUp('Você deve inserir um anexo ou link para que eu possa defini-lo como avatar.');
+        }
 
         console.log(collected)
 
