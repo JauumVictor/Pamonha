@@ -1,6 +1,5 @@
-// npm install --save-dev eslint
-
 {
+  "_comment": "npm install --save-dev eslint",
 	"extends": "eslint:recommended",
 	"env": {
 		"node": true,

@@ -4,11 +4,9 @@ module.exports = {
     if (interaction.isCommand()) {
       try {
         const command = client.applications.get(interaction.commandName);
-
-        if (!command) {
-          return;
-        }
-
+        
+        if (!command) return;
+        
         try {
           command && command.execute(interaction);
         } catch (err) {

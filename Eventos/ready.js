@@ -15,6 +15,7 @@ module.exports = {
 
         let activities = [
             `O meu nome é ${client.user.username}!`,
+            `Fui feito em JavaScript`
         ],
             i = 0;
         setInterval(
