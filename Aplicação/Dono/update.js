@@ -78,7 +78,7 @@ module.exports = {
         } else if (i.attachments.size === 0) {
           return interaction.followUp('Você deve inserir um anexo ou link para que eu possa defini-lo como avatar.');
         } else {
-          let url = i.attachments.first().url;
+          let url = await i.attachments.first().url;
 
           interaction.client.user.setAvatar(url)
             .then(() => interaction.followUp(`O novo avatar foi definido com sucesso.`))
