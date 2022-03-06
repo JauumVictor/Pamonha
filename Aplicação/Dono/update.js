@@ -53,23 +53,23 @@ module.exports = {
         let collected = i.content;
 
         interaction.client.user.setUsername(collected)
-          .then(() => interaction.reply(`O nome do cliente foi atualizado com sucesso para: \`${username}\`.`))
+          .then(() => interaction.followUp(`O nome do cliente foi atualizado com sucesso para: \`${username}\`.`))
           .catch((e) => {
             console.error(e);
-            return interaction.reply('Ocorreu um erro, tente novamente mais tarde');
+            return interaction.followUp('Ocorreu um erro, tente novamente mais tarde');
           });
       });
 
-      collector.on('end', () => {
-        interaction.followUp('Acabou o tempo.');
+      collector.on('end', (c, r) => {
+        if (r == 'time') {
+          interaction.followUp('Acabou o tempo.');
+        }
       });
 
     } else if (client == 'avatar') {
       await interaction.reply('Insira um link ou anexo:');
 
       let filter = (i) => i.author.id === interaction.user.id;
-      let avatar = interaction.client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
-      let username = interaction.client.user.username;
       let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
 
       collector.on('collect', async (i) => {
