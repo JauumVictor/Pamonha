@@ -79,7 +79,7 @@ module.exports = {
           return interaction.followUp('Cancelado!');
         }
 
-        if (regex.test(i.content)) {
+        if (i.content.split().startsWith(regex)) {
           interaction.client.user.setAvatar(i.content)
             .then(() => interaction.followUp(`O novo avatar foi definido com sucesso.`))
             .catch((e) => {
