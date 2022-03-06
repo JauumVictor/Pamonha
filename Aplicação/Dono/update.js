@@ -67,7 +67,8 @@ module.exports = {
     } else if (client == 'avatar') {
       await interaction.reply('Insira um link ou anexo:');
 
-      let filter = (i) => i.author.id === interaction.user.id;let avatar = interaction.client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+      let filter = (i) => i.author.id === interaction.user.id;
+      let avatar = interaction.client.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
       let username = interaction.client.user.username;
       let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
 
@@ -84,13 +85,11 @@ module.exports = {
 
       collector.on('end', (c, r) => {
         if (r == 'time') {
-        interaction.followUp('Acabou o tempo.');
+          interaction.followUp('Acabou o tempo.');
         }
       });
 
     } else {
-
-
       let embed = new MessageEmbed()
         .setColor(process.env.EMBED_COLOR)
         .setThumbnail(avatar)
