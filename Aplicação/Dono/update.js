@@ -44,13 +44,15 @@ module.exports = {
     if (client == 'username') {
       await interaction.reply('Insira o novo nome:');
 
-      let filter = (i) => i.user.id === interaction.user.id;
+      let filter = (i) => i.author.id === interaction.user.id;
       let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
 
       collector.on('collect', (i) => {
         let collected = i.content;
 
-        interaction.client.user.setUsername(collected).catch((e) => {
+        interaction.client.user.setUsername(collected)
+        .then(() => interaction.reply(`O nome do cliente foi atualizado com sucesso para: \`${client.user.username}\`.`))
+        .catch((e) => {
           console.error(e);
           return interaction.reply('Ocorreu um erro, tente novamente mais tarde');
         });
@@ -63,7 +65,7 @@ module.exports = {
     } else if (client == 'avatar') {
       await interaction.reply('Insira um link ou anexo:');
 
-      let filter = (i) => i.user.id === interaction.user.id;
+      let filter = (i) => i.author.id === interaction.user.id;
       let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
 
       collector.on('collect', async (i) => {
