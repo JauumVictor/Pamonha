@@ -73,24 +73,18 @@ module.exports = {
       let collector = interaction.channel.createMessageCollector({ filter: filter, time: 60000 * 5, max: 1, errors: ['time'] });
 
       collector.on('collect', async (i) => {
-        let collected = i.content;
-        let attachment = i.attachments;
-        console.log(collected);
-        console.log(attachment);
-
-        if (collected == 'cancelar') {
+        if (i.content == 'cancelar') {
           return interaction.followUp('Cancelado!');
-        } else if (attachment.size < 0) {
+        } else if (i.attachments.size === 0) {
           return interaction.followUp('Você deve inserir um anexo ou link para que eu possa defini-lo como avatar.');
         } else {
-          let url = attachment.first().url;
-          console.log(url);
+          let url = i.attachments.first().url;
 
           interaction.client.user.setAvatar(url)
             .then(() => interaction.followUp(`O novo avatar foi definido com sucesso.`))
             .catch((e) => {
               console.error(e);
-              return interaction.followUp('Ocorreu um erro, tente novamente mais tarde');
+              return interaction.followUp('Ocorreu um erro, tente novamente.');
             });
         }
       });
