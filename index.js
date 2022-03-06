@@ -79,7 +79,7 @@ const DIFF = 3000;
 
 client.on('messageCreate', async (message) => {
   if (message.author.bot) return;
-  
+
   if (usersMap.has(message.author.id)) {
     const userData = usersMap.get(message.author.id);
     const { lastMessage, timer } = userData;
@@ -101,24 +101,24 @@ client.on('messageCreate', async (message) => {
       ++msgCount;
       if (parseInt(msgCount) === LIMIT) {
         let muterole = message.guild.roles.cache.find((r) => r.name === 'Silenciado(a)');
-        
+
         if (!muterole) {
           try {
-            muterole = await message.guild.roles.create({
-              name: 'Mutado',
-              permissions: []
-            });
-            message.guild.channels.cache.forEach(async (channel, id) => {
-              await channel.createOverwrite(muterole, {
+            muterole = await message.guild.roles.create({ name: "Silenciado(a)", color: "BLACK" })
+
+            message.guild.channels.cache.forEach(async (channel) => {
+              await channel.permissionOverwrites.create(role, {
                 SEND_MESSAGES: false,
-                ADD_REACTIONS: false
+                ADD_REACTIONS: false,
+                SPEAK: false,
+                STREAM: false,
               });
             });
           } catch (e) {
             console.log(e);
           }
         }
-        
+
         const mutado = new MessageEmbed()
           .setColor(process.env.EMBED_COLOR)
           .setThumbnail(message.author.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 }))
@@ -137,7 +137,7 @@ client.on('messageCreate', async (message) => {
 
         message.member.roles.add(muterole);
         let logchannel = message.guild.channels.cache.get('934567809961320538');
-        
+
         if (!logchannel) {
           message.reply(`Você está enviando uma alta quantidade de mensagens por segundo, você foi mutado(a) temporariamente por \`60 segundos\`.`);
         } else {
@@ -148,7 +148,7 @@ client.on('messageCreate', async (message) => {
         message.member.send(mutado).catch(e => {
           if (e) return;
         });
-        
+
         setTimeout(() => {
           if (!message.member) return;
           message.member.roles.remove(muterole);
