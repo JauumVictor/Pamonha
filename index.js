@@ -8,7 +8,7 @@ const client = new Client({ intents: 1999 }); // Insira o valor das intents nece
 const { readdirSync }= require('fs'); // npm i fs --save
 const { config } = require('dotenv'); // npm i dotenv --save
 const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest --save
-const { Routes } = require('discord-api-types/v9');
+const { Routes } = require('discord-api-types/v10');
 const c = require('colors'); // npm i colors --save
 
 //===============> Exportações <===============//
