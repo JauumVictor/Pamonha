@@ -8,7 +8,7 @@ const client = new Client({ intents: 1999 }); // Insira o valor das intents nece
 const { readdirSync }= require('fs'); // npm i fs --save
 const { config } = require('dotenv'); // npm i dotenv --save
 const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest --save
-const { Routes } = require('discord-api-types/v9');
+const { Routes } = require('discord-api-types/v10');
 const c = require('colors'); // npm i colors --save
 
 //===============> Exportações <===============//
@@ -56,7 +56,7 @@ for (const folder of applicationFolders) {
 
 //===============> Atualizações dos comandos de barra <===============//
 
-const rest = new REST({ version: '9' }).setToken(process.env.TOKEN);
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 (async () => {
   try {
     console.log(c.yellow('Atualizando os comandos de barra (/).'));
