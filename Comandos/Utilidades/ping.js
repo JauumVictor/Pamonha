@@ -1,31 +1,48 @@
 // eslint-disable-next-line no-unused-vars
-const { Client, Message, MessageEmbed } = require('discord.js');
+const { Client, Message, CommandInteraction, MessageEmbed } = require('discord.js');
 
 module.exports = {
-    name: 'ping',
-    description: 'Vê o ping de resposta entre usuário e cliente e do host do BOT.',
-    category: '⚙️ Utilidades',
-    aliases: ['pong'],
-    usage: [],
-    /**
-    * @param {Client} client
-    * @param {Message} message
-    * @param {String[]} args
-    */
-    execute: async (client, message) => {
-        let msg = await message.channel.send('**🔍 | Processando...**');
+  name: 'ping',
+  description: '[⚙️ Utilidades] Exibe o ping de resposta entre usuário e cliente e do host do BOT.',
+  category: '⚙️ Utilidades',
+  aliases: ['pong'],
+  usage: [],
+  /**
+   * @param {Client} client
+   * @param {Message} message
+   */
+  commandExecute: async (client, message) => {
+    let msg = await message.channel.send('**🔍 | Processando...**');
 
-        const created = Math.round(Date.now() - message.createdTimestamp);
-        const host = Math.round(client.ws.ping);
+    const created = Math.round(Date.now() - message.createdTimestamp);
+    const host = Math.round(client.ws.ping);
 
-        const embed = new MessageEmbed()
-            .setColor(process.env.EMBED_COLOR)
-            .setTitle('Pong! 🏓')
-            .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
-            .setFooter({ text: client.user.username })
-            .setTimestamp();
+    const embed = new MessageEmbed()
+      .setColor(process.env.EMBED_COLOR)
+      .setTitle('Pong! 🏓')
+      .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
+      .setFooter({ text: client.user.username })
+      .setTimestamp();
 
-        message.reply({ embeds: [embed] });
-        msg.delete();
-    },
+    message.reply({ embeds: [embed] });
+    msg.delete();
+  },
+
+  /**
+   * @param {CommandInteraction} interaction
+   */
+  interactionExecute: async (interaction) => {
+
+    const created = Math.round(Date.now() - interaction.createdTimestamp);
+    const host = Math.round(interaction.client.ws.ping);
+
+    const embed = new MessageEmbed()
+      .setColor(process.env.EMBED_COLOR)
+      .setTitle('Pong! 🏓')
+      .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
+      .setFooter({ text: interaction.client.user.username })
+      .setTimestamp();
+
+    interaction.reply({ embeds: [embed] });
+  },
 };

@@ -21,7 +21,7 @@ config(); // Configurando o arquivo .env
 //===============> Handlers <===============//
 
 // Uma pasta dedicada para comandos:
-const commandFolders = readdirSync('./Comandos');
+/*const commandFolders = readdirSync('./Comandos');
 for (const folder of commandFolders) {
   const commandFiles = readdirSync(`./Comandos/${folder}`).filter(file => file.endsWith(".js"));
 
@@ -29,7 +29,7 @@ for (const folder of commandFolders) {
     const command = require(`./Comandos/${folder}/${file}`);
     client.commands.set(command.name, command);
   }
-}
+}*/
 // Uma pasta dedicada para eventos:
 const eventFiles = readdirSync('./Eventos').filter(file => file.endsWith(".js"));
 for (const file of eventFiles) {
@@ -42,15 +42,16 @@ for (const file of eventFiles) {
   }
 }
 // Uma pasta dedicada para comandos de barra:
-const application = [];
-const applicationFolders = readdirSync('./Aplicação');
-for (const folder of applicationFolders) {
-  const applicationFiles = readdirSync(`./Aplicação/${folder}`).filter(file => file.endsWith(".js"));
+const commands = [];
+const commandsFolders = readdirSync('./Comandos');
+for (const folder of commandsFolders) {
+  const commandsFiles = readdirSync(`./Comandos/${folder}`).filter(file => file.endsWith(".js"));
 
-  for (const file of applicationFiles) {
-    const command = require(`./Aplicação/${folder}/${file}`);
-    client.applications.set(command.data.name, command);
-    application.push(command.data);
+  for (const file of commandsFiles) {
+    const command = require(`./Comandos/${folder}/${file}`);
+    client.commands.set(command.name, command);
+    client.applications.set(command.name, command);
+    application.push(command);
   }
 }
 
@@ -62,7 +63,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     console.log(c.yellow('Atualizando os comandos de barra (/).'));
 
     await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID), { body: application },
+      Routes.applicationCommands(process.env.CLIENT_ID), { body: commands },
     );
 
     console.log(c.green('Atualizado com sucesso todos os comandos de barra (/)!'));

@@ -25,7 +25,7 @@ module.exports = {
             }
 
             try {
-                command && command.execute(client, message, args, prefix);
+                command && command.commandExecute(client, message, args, prefix);
             } catch (error) {
                 console.error(error);
                 return message.reply('Ouve um erro ao executar o comando! Tente novamente mais tarde.');

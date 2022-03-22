@@ -8,7 +8,7 @@ module.exports = {
         if (!command) return;
         
         try {
-          command && command.execute(interaction);
+          command && command.interactionExecute(interaction);
         } catch (err) {
           console.error(err);
           await interaction.reply({ content: 'Ocorreu um erro ao executar esta aplicação, tente novamente mais tarde.', ephemeral: true });
