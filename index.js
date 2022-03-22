@@ -51,7 +51,7 @@ for (const folder of commandsFolders) {
     const command = require(`./Comandos/${folder}/${file}`);
     client.commands.set(command.name, command);
     client.applications.set(command.name, command);
-    application.push(command);
+    commands.push(command);
   }
 }
 
