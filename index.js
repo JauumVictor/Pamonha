@@ -20,16 +20,6 @@ config(); // Configurando o arquivo .env
 
 //===============> Handlers <===============//
 
-// Uma pasta dedicada para comandos:
-/*const commandFolders = readdirSync('./Comandos');
-for (const folder of commandFolders) {
-  const commandFiles = readdirSync(`./Comandos/${folder}`).filter(file => file.endsWith(".js"));
-
-  for (const file of commandFiles) {
-    const command = require(`./Comandos/${folder}/${file}`);
-    client.commands.set(command.name, command);
-  }
-}*/
 // Uma pasta dedicada para eventos:
 const eventFiles = readdirSync('./Eventos').filter(file => file.endsWith(".js"));
 for (const file of eventFiles) {
@@ -41,7 +31,7 @@ for (const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
-// Uma pasta dedicada para comandos de barra:
+// Uma pasta dedicada para comandos:
 const commands = [];
 const commandsFolders = readdirSync('./Comandos');
 for (const folder of commandsFolders) {
