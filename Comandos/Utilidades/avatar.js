@@ -70,6 +70,6 @@ module.exports = {
         .setStyle('LINK')
       );
 
-    await interaction.reply({ embeds: [embed], components: [row] });
+    interaction.reply({ embeds: [embed], components: [row] });
   },
 };
