@@ -31,7 +31,7 @@ module.exports = {
   /**
    * @param {CommandInteraction} interaction
    */
-  interactionExecute: async (interaction) => {
+  interactionExecute: (interaction) => {
 
     const created = Math.round(Date.now() - interaction.createdTimestamp);
     const host = Math.round(interaction.client.ws.ping);

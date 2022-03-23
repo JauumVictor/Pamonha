@@ -9,7 +9,7 @@ module.exports = {
   usage: [],
   options: [
     {
-      name: 'membro',
+      name: 'user',
       type: 6,
       description: 'Selecione um usuário:'
     },
@@ -22,8 +22,8 @@ module.exports = {
   commandExecute: async (client, message, args) => {
 
     let msg = await message.channel.send('**🔍 | Processando...**');
-    let member = message.guild.members.cache.get(args[0]) || message.mentions.members.first() || message.member;
-    let avatar = member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+    let user = message.mentions.users.first() || client.users.cache.get(args[0]) || message.author;
+    let avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
     const embed = new MessageEmbed()
       .setColor(process.env.EMBED_COLOR)
@@ -49,9 +49,9 @@ module.exports = {
   /**
    * @param {CommandInteraction} interaction 
    */
-  interactionExecute: async (interaction) => {
-    let member = interaction.options.getMember('membro') || interaction.member;
-    let avatar = member.user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
+  interactionExecute: (interaction) => {
+    let user = interaction.options.getUser('user') || interaction.user;
+    let avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
     const embed = new MessageEmbed()
       .setColor(process.env.EMBED_COLOR)
