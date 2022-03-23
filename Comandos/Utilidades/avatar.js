@@ -28,7 +28,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setColor(process.env.EMBED_COLOR)
       .setTitle('📷 Avatar de Perfil')
-      .addField(`Avatar de:`, `\`${member.user.username}\``, true)
+      .addField(`Avatar de:`, `\`${user.username}\``, true)
       .setImage(avatar)
       .setFooter({ text: client.user.username })
       .setTimestamp();
@@ -56,7 +56,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setColor(process.env.EMBED_COLOR)
       .setTitle('📷 Avatar de Perfil')
-      .addField(`Avatar de:`, `\`${member.user.username}\``, true)
+      .addField(`Avatar de:`, `\`${user.username}\``, true)
       .setImage(avatar)
       .setFooter({ text: interaction.client.user.username })
       .setTimestamp();
