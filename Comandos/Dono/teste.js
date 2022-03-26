@@ -2,6 +2,7 @@ const { Client, Message } = require('discord.js');
 
 module.exports = {
   name: 'teste',
+  description: '[👑 Owner] Comando exclusivo do desenvolvedor.',
   aliases: ['t'],
   register: false,
   /**
