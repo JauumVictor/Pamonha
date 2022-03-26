@@ -16,7 +16,9 @@ module.exports = {
       return;
     }
     
-    // Código aqui: 
+    // Código aqui:
+    
+    message.channel.send('Testando');
 
   }
 }

@@ -40,16 +40,17 @@ for (const folder of commandsFolders) {
   for (const file of commandsFiles) {
     const command = require(`./Comandos/${folder}/${file}`);
     client.commands.set(command.name, command);
-    client.applications.set(command.name, command);
-    commands.push(command);
+    if (command.register) {
+      client.applications.set(command.name, command);
+      commands.push(command);
+    }
   }
 }
 
 
 //===============> Atualizações dos comandos de barra <===============//
-const { command } = client;
 
-if (command.register) {
+if (commands.register) {
   const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
   (async () => {
     try {
