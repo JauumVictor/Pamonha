@@ -42,11 +42,8 @@ for (const folder of commandsFolders) {
     client.commands.set(command.name, command);
     client.applications.set(command.name, command);
     commands.push(command);
-  }
-}
-
-//===============> Atualizações dos comandos de barra <===============//
-
+    
+    //===============> Atualizações dos comandos de barra <===============//
 if (command.register) { 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 (async () => {
@@ -63,6 +60,10 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
   }
 })();
 }
+
+  }
+}
+
 
 //===============> Finalizações <===============//
 
