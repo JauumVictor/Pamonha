@@ -47,6 +47,7 @@ for (const folder of commandsFolders) {
 
 //===============> Atualizações dos comandos de barra <===============//
 
+if (command.register) { 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 (async () => {
   try {
@@ -61,6 +62,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     console.error(error);
   }
 })();
+}
 
 //===============> Finalizações <===============//
 
