@@ -18,7 +18,7 @@ module.exports = {
 
     // Código aqui:
 
-    message.channel.send('Testando');
+    message.reply('Testando');
 
   },
 
@@ -30,7 +30,6 @@ module.exports = {
     
     // Código aqui:
     
-    console.log(interaction.message)
-    interaction.deferUpdate();
+    interaction.reply('Testando');
   }
 }

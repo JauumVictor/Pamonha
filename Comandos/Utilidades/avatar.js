@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const { Client, Message, CommandInteraction, MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const { Client, Message, CommandInteraction, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 module.exports = {
   name: 'avatar',
@@ -17,7 +17,7 @@ module.exports = {
   ],
   /**
    * @param {Client} client 
-   * @param {Message} message 
+   * @param {Message} message
    * @param {String[]} args 
    */
   commandExecute: async (client, message, args) => {
@@ -26,27 +26,27 @@ module.exports = {
     let user = message.mentions.users.first() || client.users.cache.get(args[0]) || message.author;
     let avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setColor(process.env.EMBED_COLOR)
       .setTitle('📷 Avatar de Perfil')
-      .addField(`Avatar de:`, `\`${user.username}\``, true)
+      .addFields({ name: `Avatar de:`, value: `\`${user.username}\``, inline: true })
       .setImage(avatar)
       .setFooter({ text: client.user.username })
       .setTimestamp();
 
-    let row = new MessageActionRow()
+    let row = new ActionRowBuilder()
       .addComponents(
-        new MessageButton()
-        .setEmoji('🔗')
+        new ButtonBuilder()
+        .setEmoji({ name: '🔗' })
         .setLabel('Baixar')
         .setURL(`${avatar}`)
-        .setStyle('LINK')
+        .setStyle(ButtonStyle.Link)
       );
 
     message.reply({ embeds: [embed], components: [row] });
     msg.delete()
   },
-  
+
   /**
    * @param {CommandInteraction} interaction 
    */
@@ -54,21 +54,21 @@ module.exports = {
     let user = interaction.options.getUser('user') || interaction.user;
     let avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setColor(process.env.EMBED_COLOR)
       .setTitle('📷 Avatar de Perfil')
-      .addField(`Avatar de:`, `\`${user.username}\``, true)
+      .addFields({ name: `Avatar de:`, value: `\`${user.username}\``, inline: true })
       .setImage(avatar)
       .setFooter({ text: interaction.client.user.username })
       .setTimestamp();
 
-    let row = new MessageActionRow()
+    let row = new ActionRowBuilder()
       .addComponents(
-        new MessageButton()
-        .setEmoji('🔗')
+        new ButtonBuilder()
+        .setEmoji({ name: '🔗' })
         .setLabel('Baixar')
         .setURL(`${avatar}`)
-        .setStyle('LINK')
+        .setStyle(ButtonStyle.Link)
       );
 
     interaction.reply({ embeds: [embed], components: [row] });

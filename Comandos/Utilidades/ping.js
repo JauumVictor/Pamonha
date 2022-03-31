@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const { Client, Message, CommandInteraction, MessageEmbed } = require('discord.js');
+const { Client, Message, CommandInteraction, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: 'ping',
@@ -18,7 +18,7 @@ module.exports = {
     const created = Math.round(Date.now() - message.createdTimestamp);
     const host = Math.round(client.ws.ping);
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setColor(process.env.EMBED_COLOR)
       .setTitle('Pong! 🏓')
       .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
@@ -37,7 +37,7 @@ module.exports = {
     const created = Math.round(Date.now() - interaction.createdTimestamp);
     const host = Math.round(interaction.client.ws.ping);
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setColor(process.env.EMBED_COLOR)
       .setTitle('Pong! 🏓')
       .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
