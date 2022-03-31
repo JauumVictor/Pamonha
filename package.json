@@ -22,7 +22,7 @@
     "@discordjs/rest": "^0.3.0",
     "colors": "^1.4.0",
     "discord-api-types": "^0.30.0",
-    "discord.js": "^13.6.0",
+    "discord.js": "^14.0.0-dev.1648515273-ac4bc3a",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "fs": "^0.0.1-security"
