@@ -3,7 +3,7 @@
 // Ative as intents do seu BOT no site: https://discord.com/developers/applications/.
 // Calcule as intents necessárias para seu BOT no site: https://ziad87.net/intents/.
 
-const { Client, Collection } = require('discord.js'); // npm i discord.js --save
+const { Client, Collection } = require('discord.js'); // npm i discord.js@dev --save
 const client = new Client({ intents: 1999 }); // Insira o valor das intents necessárias.
 const { readdirSync } = require('fs'); // npm i fs --save
 const { config } = require('dotenv'); // npm i dotenv --save
@@ -40,6 +40,7 @@ for (const folder of commandsFolders) {
     client.commands.set(command.name, command);
     
     if (command.register) {
+      client.application.commands.set(command);
       client.applications.set(command.name, command);
       commands.push(command);
     }
