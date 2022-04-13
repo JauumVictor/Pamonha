@@ -19,11 +19,22 @@ module.exports = {
     const host = Math.round(client.ws.ping);
 
     const embed = new EmbedBuilder()
-      .setColor(process.env.EMBED_COLOR)
       .setTitle('Pong! 🏓')
       .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
       .setFooter({ text: client.user.username })
       .setTimestamp();
+
+    switch (true) {
+      case (created => 500):
+        embed.setColor('RED');
+        break;
+      case (created <= 299):
+        embed.setColor('GREEN');
+        break;
+      default:
+        embed.setColor('YELLOW');
+        break;
+    }
 
     message.reply({ embeds: [embed] });
     msg.delete();
@@ -38,11 +49,22 @@ module.exports = {
     const host = Math.round(interaction.client.ws.ping);
 
     const embed = new EmbedBuilder()
-      .setColor(process.env.EMBED_COLOR)
       .setTitle('Pong! 🏓')
       .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
       .setFooter({ text: interaction.client.user.username })
       .setTimestamp();
+
+    switch (true) {
+      case (created => 500):
+        embed.setColor('RED');
+        break;
+      case (created <= 299):
+        embed.setColor('GREEN');
+        break;
+      default:
+        embed.setColor('YELLOW');
+        break;
+    }
 
     interaction.reply({ embeds: [embed] });
   },
