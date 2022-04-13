@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-const { Client, Message, CommandInteraction, EmbedBuilder } = require('discord.js');
+const { Client, Message, Util, CommandInteraction, EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: 'ping',
@@ -26,13 +26,13 @@ module.exports = {
 
     switch (true) {
       case (created => 500):
-        embed.setColor('RED');
+        embed.setColor(Util.resolveColor('Red'));
         break;
       case (created <= 299):
-        embed.setColor('GREEN');
+        embed.setColor(Util.resolveColor('Green'));
         break;
       default:
-        embed.setColor('YELLOW');
+        embed.setColor(Util.resolveColor('Yellow'));
         break;
     }
 
@@ -56,13 +56,13 @@ module.exports = {
 
     switch (true) {
       case (created => 500):
-        embed.setColor('RED');
+        embed.setColor(Util.resolveColor('Red'));
         break;
       case (created <= 299):
-        embed.setColor('GREEN');
+        embed.setColor(Util.resolveColor('Green'));
         break;
       default:
-        embed.setColor('YELLOW');
+        embed.setColor(Util.resolveColor('Yellow'));
         break;
     }
 
