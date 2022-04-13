@@ -3,11 +3,20 @@
 // Ative as intents do seu BOT no site: https://discord.com/developers/applications/.
 // Calcule as intents necessárias para seu BOT no site: https://ziad87.net/intents/.
 
-const { Client, Collection } = require('discord.js'); // npm i discord.js@dev --save
-const client = new Client({ intents: 1999 }); // Insira o valor das intents necessárias.
+const { Client, Collection, GatewayIntentBits } = require('discord.js'); // npm i discord.js@dev --save
+const client = new Client({
+  intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.MessageContent
+    ],
+}); // Insira o valor das intents necessárias.
 const { readdirSync } = require('fs'); // npm i fs --save
 const { config } = require('dotenv'); // npm i dotenv --save
-const c = require('colors'); // npm i colors --save
+const { green, yellow } = require('colors'); // npm i colors --save
+const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest
+const { Routes } = require('discord-api-types/v10'); // npm i discord-api-types@latest
 
 //===============> Exportações <===============//
 
@@ -38,15 +47,27 @@ for (const folder of commandsFolders) {
   for (const file of commandsFiles) {
     const command = require(`./Comandos/${folder}/${file}`);
     client.commands.set(command.name, command);
-    
-    if (command.register) {
-      client.application.commands.set(command);
-      client.applications.set(command.name, command);
-      commands.push(command);
-    }
+    client.applications.set(command.name, command);
+    commands.push(command);
   }
 }
 
-//===============> Finalizações <===============//
+  //===============> Atualizações dos comandos de barra <===============//
 
+  const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+  (async () => {
+    try {
+      console.log(c.yellow('Atualizando os comandos de barra (/).'));
+
+      await rest.put(
+        Routes.applicationCommands(process.env.CLIENT_ID), { body: commands },
+      );
+
+      console.log(c.green('Atualizado com sucesso todos os comandos de barra (/)!'));
+    } catch (error) {
+      console.error(error);
+    }
+  })();
+  
+//===============> Finalizações <===============//
 client.login(process.env.TOKEN);
