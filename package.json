@@ -1,33 +1,28 @@
 {
   "name": "pamonha",
   "version": "1.0.0",
-  "description": "Um BOT para fins educativos.",
+  "description": "Então, você quer fazer um BOT e conhece bastante ou um pouco sobre JavaScript. Você quer fazer coisas legais como um BOT de música, comandos de moderação, pesquisas aleatórias de imagens, ou simplesmente tudo junto? Bem, você está no lugar certo!",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JauumVictor/Pamonha.git"
+    "url": "git+https://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@github.com/JauumVictor/Pamonha.git"
   },
   "keywords": [],
-  "author": "https://github.com/JauumVictor/",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/JauumVictor/Pamonha/issues"
   },
   "homepage": "https://github.com/JauumVictor/Pamonha#readme",
   "dependencies": {
-    "@discordjs/rest": "^0.3.0",
+    "@discordjs/rest": "^0.4.0-dev.1649808564-01a423d",
     "colors": "^1.4.0",
-    "discord-api-types": "^0.30.0",
-    "discord.js": "^14.0.0-dev.1648515273-ac4bc3a",
+    "discord-api-types": "^0.31.1",
+    "discord.js": "^14.0.0-dev.1649808570-01a423d",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "fs": "^0.0.1-security"
-  },
-  "devDependencies": {
-    "eslint": "^8.12.0"
+    "express": "^4.17.3"
   }
 }
