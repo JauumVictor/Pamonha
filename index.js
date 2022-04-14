@@ -1,21 +1,19 @@
 // Para usar o Discord.js, você precisará instalar o Node.js. Mais informações no site: https://nodejs.org/en/.
 // Discord.js v13 ou superior requer Node.js v16.6.0 ou superior. Você pode conferir a versão do seu node digitando: 'node -v' no terminal.
 // Ative as intents do seu BOT no site: https://discord.com/developers/applications/.
-// Calcule as intents necessárias para seu BOT no site: https://ziad87.net/intents/.
 
 const { Client, Collection, GatewayIntentBits } = require('discord.js'); // npm i discord.js@dev --save
 const client = new Client({
   intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.GuildPresences,
         GatewayIntentBits.MessageContent
     ],
 }); // Insira o valor das intents necessárias.
-const { readdirSync } = require('fs'); // npm i fs --save
+const { readdirSync } = require('fs'); // Node já vem com essa dependência instalada.
 const { config } = require('dotenv'); // npm i dotenv --save
 const { green, yellow } = require('colors'); // npm i colors --save
-const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest
+const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest@latest
 const { Routes } = require('discord-api-types/v10'); // npm i discord-api-types@latest
 
 //===============> Exportações <===============//
@@ -52,22 +50,22 @@ for (const folder of commandsFolders) {
   }
 }
 
-  //===============> Atualizações dos comandos de barra <===============//
+//===============> Atualizações dos comandos de barra <===============//
 
-  const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
-  (async () => {
-    try {
-      console.log(yellow('Atualizando os comandos de barra (/).'));
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+(async () => {
+  try {
+    console.log(yellow('Atualizando os comandos de barra (/).'));
 
-      await rest.put(
-        Routes.applicationCommands(process.env.CLIENT_ID), { body: commands },
-      );
+    await rest.put(
+      Routes.applicationCommands(process.env.CLIENT_ID), { body: commands },
+    );
 
-      console.log(green('Atualizado com sucesso todos os comandos de barra (/)!'));
-    } catch (error) {
-      console.error(error);
-    }
-  })();
-  
+    console.log(green('Atualizado com sucesso todos os comandos de barra (/)!'));
+  } catch (error) {
+    console.error(error);
+  }
+})();
+
 //===============> Finalizações <===============//
 client.login(process.env.TOKEN);
