@@ -7,21 +7,20 @@ module.exports = {
   category: '⚙️ Utilidades',
   aliases: ['pong'],
   usage: [],
-  register: true,
   /**
    * @param {Client} client
    * @param {Message} message
    */
-  commandExecute: async (client, message) => {
+  commandExecute: async (message) => {
     let msg = await message.channel.send('**🔍 | Processando...**');
 
     const created = Math.round(Date.now() - message.createdTimestamp);
-    const host = Math.round(client.ws.ping);
+    const host = Math.round(message.client.ws.ping);
 
     const embed = new EmbedBuilder()
       .setTitle('Pong! 🏓')
       .setDescription(`💓 **Ping de resposta:** \`${created}\`ms \n` + `🛰️ **Ping da host**: \`${host}\`ms.`)
-      .setFooter({ text: client.user.username })
+      .setFooter({ text: message.client.user.username })
       .setTimestamp();
 
     switch (true) {

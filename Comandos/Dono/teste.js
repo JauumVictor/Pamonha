@@ -4,13 +4,12 @@ module.exports = {
   name: 'teste',
   description: '[👑 Owner] Comando exclusivo do desenvolvedor.',
   aliases: ['t'],
-  register: false,
   /**
    * @param {Client} client
    * @param {Message} message
    * @param {string[]} args
    */
-  commandExecute: (client, message, args) => {
+  commandExecute: (message, args) => {
 
     if (message.author.id !== process.env.OWNER_ID) {
       return;
@@ -18,7 +17,7 @@ module.exports = {
 
     // Código aqui:
 
-    message.reply('Testando');
+    message.reply('Teste');
 
   },
 
@@ -30,6 +29,6 @@ module.exports = {
     
     // Código aqui:
     
-    interaction.reply('Testando');
+    interaction.reply('Teste');
   }
 }

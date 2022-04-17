@@ -7,7 +7,6 @@ module.exports = {
   category: '⚙️ Utilidades',
   aliases: ['av', 'icon'],
   usage: [],
-  register: true,
   options: [
     {
       name: 'user',
@@ -20,26 +19,26 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args 
    */
-  commandExecute: async (client, message, args) => {
+  commandExecute: async (message, args) => {
 
     let msg = await message.channel.send('**🔍 | Processando...**');
-    let user = message.mentions.users.first() || client.users.cache.get(args[0]) || message.author;
+    let user = message.mentions.users.first() || message.client.users.cache.get(args[0]) || message.author;
     let avatar = user.displayAvatarURL({ dynamic: true, format: 'png', size: 4096 });
 
     const embed = new EmbedBuilder()
       .setColor(process.env.EMBED_COLOR)
       .setTitle('📷 Avatar de Perfil')
-      .addFields({ name: `Avatar de:`, value: `\`${user.username}\``, inline: true })
+      .addFields({ name: 'Avatar de:', value: `\`${user.username}\``, inline: true })
       .setImage(avatar)
-      .setFooter({ text: client.user.username })
+      .setFooter({ text: message.client.user.username })
       .setTimestamp();
 
     let row = new ActionRowBuilder()
       .addComponents(
-        new ButtonBuilder()
+        new ButtonBuilder({})
         .setEmoji({ name: '🔗' })
         .setLabel('Baixar')
-        .setURL(`${avatar}`)
+        .setURL(avatar)
         .setStyle(ButtonStyle.Link)
       );
 
@@ -57,17 +56,17 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor(process.env.EMBED_COLOR)
       .setTitle('📷 Avatar de Perfil')
-      .addFields({ name: `Avatar de:`, value: `\`${user.username}\``, inline: true })
+      .addFields({ name: 'Avatar de:', value: `\`${user.username}\``, inline: true })
       .setImage(avatar)
       .setFooter({ text: interaction.client.user.username })
       .setTimestamp();
 
     let row = new ActionRowBuilder()
       .addComponents(
-        new ButtonBuilder()
+        new ButtonBuilder({})
         .setEmoji({ name: '🔗' })
         .setLabel('Baixar')
-        .setURL(`${avatar}`)
+        .setURL(avatar)
         .setStyle(ButtonStyle.Link)
       );
 
