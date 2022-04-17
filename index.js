@@ -1,5 +1,5 @@
 // Para usar o Discord.js, você precisará instalar o Node.js. Mais informações no site: https://nodejs.org/en/.
-// Discord.js v13 ou superior requer Node.js v16.6.0 ou superior. Você pode conferir a versão do seu node digitando: 'node -v' no terminal.
+// Discord.js v14 ou superior requer Node.js v16.9.0 ou superior. Você pode conferir a versão do seu node digitando: 'node -v' no terminal.
 // Ative as intents do seu BOT no site: https://discord.com/developers/applications/.
 
 const { Client, Collection, GatewayIntentBits } = require('discord.js'); // npm i discord.js@dev --save
