@@ -1,4 +1,4 @@
-// Registrando os comandos slash:
+// Registrando os comandos de barra:
 
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
