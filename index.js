@@ -49,4 +49,5 @@ for (const folder of commandsFolders) {
 }
 
 //===============> Finalizações <===============//
+
 client.login(process.env.TOKEN);
