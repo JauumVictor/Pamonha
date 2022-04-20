@@ -37,7 +37,6 @@ for (const file of eventFiles) {
   }
 }
 // Uma pasta dedicada para comandos:
-const commands = [];
 const commandsFolders = readdirSync('./Comandos');
 for (const folder of commandsFolders) {
   const commandsFiles = readdirSync(`./Comandos/${folder}`).filter(file => file.endsWith(".js"));
@@ -46,26 +45,8 @@ for (const folder of commandsFolders) {
     const command = require(`./Comandos/${folder}/${file}`);
     client.commands.set(command.name, command);
     client.applications.set(command.name, command);
-    commands.push(command);
   }
 }
-
-//===============> Atualizações dos comandos de barra <===============//
-
-const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
-(async () => {
-  try {
-    console.log(yellow('Atualizando os comandos de barra (/).'));
-
-    await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID), { body: commands },
-    );
-
-    console.log(green('Atualizado com sucesso todos os comandos de barra (/)!'));
-  } catch (error) {
-    console.error(error);
-  }
-})();
 
 //===============> Finalizações <===============//
 client.login(process.env.TOKEN);
