@@ -15,7 +15,9 @@ for (const folder of commandsFolders) {
 
   for (const file of commandsFiles) {
     const command = require(`./Comandos/${folder}/${file}`);
+    if (command.register) {
     commands.push(command);
+    }
   }
 }
 

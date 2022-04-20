@@ -7,6 +7,7 @@ module.exports = {
   category: '⚙️ Utilidades',
   aliases: ['pong'],
   usage: [],
+  register: true,
   /**
    * @param {Client} client
    * @param {Message} message

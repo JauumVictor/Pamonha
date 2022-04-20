@@ -4,6 +4,7 @@ module.exports = {
   name: 'teste',
   description: '[👑 Owner] Comando exclusivo do desenvolvedor.',
   aliases: ['t'],
+  register: false,
   /**
    * @param {Client} client
    * @param {Message} message

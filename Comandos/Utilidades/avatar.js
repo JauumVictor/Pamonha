@@ -7,6 +7,7 @@ module.exports = {
   category: '⚙️ Utilidades',
   aliases: ['av', 'icon'],
   usage: [],
+  register: true,
   options: [
     {
       name: 'user',
