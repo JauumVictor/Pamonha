@@ -1,9 +1,11 @@
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
-const commands = [];
-const commandsFolders = readdirSync('./Comandos');
+const { readdirSync } = require('fs');
 
 //===============> Pegando todos os comandos das pastas <===============//
+
+const commands = [];
+const commandsFolders = readdirSync('./Comandos');
 
 for (const folder of commandsFolders) {
   const commandsFiles = readdirSync(`./Comandos/${folder}`).filter(file => file.endsWith(".js"));
