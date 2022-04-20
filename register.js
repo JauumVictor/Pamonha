@@ -25,7 +25,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.CLIENT_TOKEN);
     console.log(yellow('Atualizando os comandos de aplicação (/).'));
 
     await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID), { body: applications },
+      Routes.applicationCommands(process.env.CLIENT_ID), { body: commands },
     );
 
     console.log(green('Atualizado com sucesso todos os comandos de aplicação (/)!'));
