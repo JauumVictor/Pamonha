@@ -1,7 +1,9 @@
+// Registrando os comandos slash:
+
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { readdirSync } = require('fs');
-const { yellow, green } = require('colors');
+const { yellow, green } = require('colors'); // npm i colors --save
 
 //===============> Pegando todos os comandos das pastas <===============//
 
@@ -33,3 +35,5 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     console.error(error);
   }
 })();
+
+// npm run register

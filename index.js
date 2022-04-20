@@ -9,11 +9,10 @@ const client = new Client({
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent
     ],
-}); // Insira o valor das intents necessárias.
+}); // Insira as intents necessárias.
 const { readdirSync } = require('fs'); // Node já vem com essa dependência instalada.
 const { green, yellow } = require('colors'); // npm i colors --save
-const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest@latest
-const { Routes } = require('discord-api-types/v10'); // npm i discord-api-types@latest
+
 
 //===============> Exportações <===============//
 
