@@ -11,7 +11,6 @@ const client = new Client({
     ],
 }); // Insira o valor das intents necessárias.
 const { readdirSync } = require('fs'); // Node já vem com essa dependência instalada.
-const { config } = require('dotenv'); // npm i dotenv --save
 const { green, yellow } = require('colors'); // npm i colors --save
 const { REST } = require('@discordjs/rest'); // npm i @discordjs/rest@latest
 const { Routes } = require('discord-api-types/v10'); // npm i discord-api-types@latest
@@ -21,7 +20,7 @@ const { Routes } = require('discord-api-types/v10'); // npm i discord-api-types@
 module.exports = client;
 client.commands = new Collection(); // Nova Collection para comandos de prefixo.
 client.applications = new Collection(); // Nova Collection para comandos de barra.
-config(); // Configurando o arquivo .env
+require('dotenv').config(); // Configurando o arquivo .env
 
 //===============> Handlers <===============//
 

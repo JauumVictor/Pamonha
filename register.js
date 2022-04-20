@@ -2,6 +2,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { readdirSync } = require('fs');
 const { yellow, green } = require('colors');
+require('dotenv').config();
 
 //===============> Pegando todos os comandos das pastas <===============//
 
