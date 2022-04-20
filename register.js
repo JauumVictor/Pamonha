@@ -2,7 +2,6 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { readdirSync } = require('fs');
 const { yellow, green } = require('colors');
-require('dotenv').config();
 
 //===============> Pegando todos os comandos das pastas <===============//
 
@@ -20,7 +19,7 @@ for (const folder of commandsFolders) {
 
 //===============> Atualizações dos comandos de barra <===============//
 
-const rest = new REST({ version: '10' }).setToken(process.env.CLIENT_TOKEN);
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 (async () => {
   try {
     console.log(yellow('Atualizando os comandos de aplicação (/).'));
