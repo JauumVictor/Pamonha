@@ -11,18 +11,8 @@ module.exports = {
 
     const app = express();
 
-    //===============> Atividades <===============//
+    //===============> Status <===============//
 
-    let activities = [
-        `O meu nome é ${client.user.username}!`,
-        `Fui feito em JavaScript`
-      ],
-      i = 0;
-    setInterval(() => {
-      client.user.setActivity(`${activities[i++ % activities.length]}`, {
-        type: 'PLAYING'
-      }), 500 * 30});
-      
     client.user.setStatus('online');
 
     //===============> Finalizações <===============//
