@@ -11,8 +11,6 @@ const client = new Client({
     ],
 }); // Insira as intents necessárias.
 const { readdirSync } = require('fs'); // Node já vem com essa dependência instalada.
-const { green, yellow } = require('colors'); // npm i colors --save
-
 
 //===============> Exportações <===============//
 
