@@ -16,7 +16,7 @@ for (const folder of commandsFolders) {
   for (const file of commandsFiles) {
     const command = require(`./Comandos/${folder}/${file}`);
     if (command.register) {
-    commands.push(command);
+      commands.push(command);
     }
   }
 }
@@ -28,9 +28,15 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
   try {
     console.log(yellow('Atualizando os comandos de aplicação (/).'));
 
+    // Registrando localmente:
     await rest.put(
-      Routes.applicationCommands(process.env.CLIENT_ID), { body: commands },
+      Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), { body: commands },
     );
+
+    // Registrando globalmente:
+    /*await rest.put(
+      Routes.applicationCommands(process.env.CLIENT_ID), { body: commands },
+    );*/
 
     console.log(green('Atualizado com sucesso todos os comandos de aplicação (/)!'));
   } catch (error) {
