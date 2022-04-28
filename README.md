@@ -1,6 +1,6 @@
 # Introdução
 
-Então, você quer fazer um BOT e conhece bastante ou um pouco sobre JavaScript. Você quer fazer coisas legais como um BOT de música, comandos de moderação, pesquisas aleatórias de imagens, ou simplesmente tudo junto? Bem, você está no lugar certo!
+Então, você quer fazer um BOT e conhece pouco sobre JavaScript. Você quer fazer coisas legais como um BOT de música, comandos de moderação, pesquisas aleatórias de imagens, ou simplesmente tudo junto? Bem, você está no lugar certo!
 
 Este tutorial o guiará pelas primeiras etapas da criação de um BOT, da configuração, da execução e da adição de alguns comandos a ele.
 
@@ -65,7 +65,7 @@ Com esse aviso fora do caminho, vamos para o próximo passo. O Token, como acabe
 
 ![NUNCA COMPARTILHE SEU TOKEN!](./.gitbook/assets/copy-token.png)
 
-## Step 2: Preparando seu ambiente de codificação
+## Etapa 2: Preparando seu ambiente de codificação
 
 Isso pode soar desnecessário, mas vou dizer de qualquer maneira: você não pode simplesmente começar pôr o código do BOT no terminal e esperar que funcione. Para usar o discord.js, você precisará de algumas coisas instaladas. Pelo menos:
 
@@ -82,7 +82,7 @@ Então você tem sua CLI pronta, em uma pasta vazia, e você só quer começar a
 
 E agora instalamos o Discord.js através do NPM, o Node Package Manager:
 
-`npm i discord.js`
+`npm i discord.js@dev`
 
 ![Instalando os pacotes](./.gitbook/assets/installing-discordjs.gif)
 
@@ -92,7 +92,7 @@ Isso levará alguns segundos e exibirá muitas coisas na tela. A menos que você
 
 Sinceramente, considero que, se você chegou até aqui, você compreende o mínimo de JavaScript. Se você não entender o exemplo a seguir, acesse [CodeAcademy](https://www.codecademy.com/learn/introduction-to-javascript) e aprenda JavaScript primeiro. Eu imploro: pare, e aprenda pelo menos o básico.
 
-Ok, finalmente, estamos prontos para começar a codificar \o/. Vamos dar uma olhada no exemplo mais básico. Segue o código na íntegra:
+Ok, finalmente, estamos prontos para começar a codar \o/. Vamos dar uma olhada no exemplo mais básico. Segue o código na íntegra:
 
 ```javascript
 const { Client, GatewayIntentBits } = require('discord.js'); // O Client e as Intents são desestruturados do discord.js, pois exporta um objeto por padrão. Leia sobre desestruturação aqui https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
