@@ -19,17 +19,5 @@ module.exports = {
     // Código aqui:
 
     message.reply('Teste');
-
-  },
-
-  interactionExecute: (interaction) => {
-    
-    if (interaction.user.id !== process.env.OWNER_ID) {
-      return
-    }
-    
-    // Código aqui:
-    
-    interaction.reply('Teste');
   }
 }

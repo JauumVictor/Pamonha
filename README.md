@@ -95,22 +95,26 @@ Sinceramente, considero que, se você chegou até aqui, você compreende o míni
 Ok, finalmente, estamos prontos para começar a codificar \o/. Vamos dar uma olhada no exemplo mais básico. Segue o código na íntegra:
 
 ```javascript
-const { Client, Intents } = require("discord.js"); // O Client e as Intents são desestruturados do discord.js, pois exporta um objeto por padrão. Leia sobre desestruturação aqui https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+const { Client, GatewayIntentBits } = require('discord.js'); // O Client e as Intents são desestruturados do discord.js, pois exporta um objeto por padrão. Leia sobre desestruturação aqui https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
 });
 
-client.on("ready", () => {
-  console.log("Estou online!");
+client.on('ready', () => {
+  console.log('Estou online!');
 });
 
-client.on("messageCreate", (message) => {
-  if (message.content.startsWith("ping")) {
-    message.channel.send("pong!");
+client.on('messageCreate', (message) => {
+  if (message.content == 'ping') {
+    message.reply('pong!');
   }
 });
 
-client.login("TokenSuperSecretoAqui");
+client.login('TokenSuperSecretoAqui');
 ```
 
 A variável `client` aqui é usada como exemplo para representar a classe [&lt;Client&gt;](https://discord.js.org/#/docs/main/stable/class/Client). Algumas pessoas chamam de `bot`, mas tecnicamente você pode chamá-lo do que quiser. Eu recomendo ficar com `client`!
